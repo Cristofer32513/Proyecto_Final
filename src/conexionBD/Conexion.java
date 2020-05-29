@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import modelo.Usuario;
 
 public class Conexion {
     public static Connection conexion;
@@ -45,5 +46,70 @@ public class Conexion {
             conexion.close();
         }
         catch(SQLException e){}
-    }   
+    } 
+    
+    public boolean ejecutarAlta(String sql, Usuario usuario) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setInt(1, usuario.getIdEmpleado());
+            pstm.setString(2, usuario.getUsuario());
+            pstm.setString(3, usuario.getContraseña());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+    
+    public boolean ejecutarBaja(String sql, int id) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setInt(1, id);
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+	
+    public boolean ejecutarModificacion(String sql, Usuario usuario) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, usuario.getUsuario());
+            pstm.setString(2, usuario.getContraseña());
+            pstm.setInt(3, usuario.getIdEmpleado());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+    
+    public ResultSet ejecutarConsultaUsuarios(String sql, String usuario, String contraseña) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, usuario);
+            pstm.setString(2, contraseña);
+            rs=pstm.executeQuery();
+        }
+        catch(SQLException e) {}
+        
+        return rs;
+    }
+    
+    public ResultSet ejecutarConsultaUsuarios(String sql, int idEmpleado) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setInt(1, idEmpleado);
+            rs=pstm.executeQuery();
+        }
+        catch(SQLException e) {}
+       
+        return rs;
+    }
+    
+    
 }
