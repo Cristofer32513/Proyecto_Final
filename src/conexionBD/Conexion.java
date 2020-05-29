@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import modelo.Categoria;
 import modelo.Usuario;
 
 public class Conexion {
@@ -111,5 +112,43 @@ public class Conexion {
         return rs;
     }
     
+    public boolean ejecutarAlta(String sql, Categoria categoria) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, categoria.getNombre());
+            pstm.setString(2, categoria.getDescripcion());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+	
+    public boolean ejecutarModificacion(String sql, Categoria categoria) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, categoria.getNombre());
+            pstm.setString(2, categoria.getDescripcion());
+            pstm.setInt(3, categoria.getIdCategoria());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
     
+    public ResultSet ejecutarConsultaID(String sql, String id) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, id);
+            rs=pstm.executeQuery();
+        }
+        catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo ejecutar la consulta SQL" + e.getMessage(), "Error de conexion", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return rs;
+    }
 }
