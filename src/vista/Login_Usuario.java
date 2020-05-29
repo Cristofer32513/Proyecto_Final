@@ -1,10 +1,12 @@
 
 package vista;
 
+import controlador.UsuarioDAO;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import modelo.JPlaceholderPasswordField;
 import modelo.JPlaceholderTextField;
+import modelo.Usuario;
 
 public class Login_Usuario extends javax.swing.JFrame {
 
@@ -211,7 +213,18 @@ public class Login_Usuario extends javax.swing.JFrame {
     private void entrar () {
         user = cajaUsuario.getText();
         if(verificarEstadoComponentes()) {
-             
+             usua = USUARIO_DAO.buscarUsuario(user, pass);
+            if(usua != null){
+                
+                if(usua.getUsuario().equals("Admin")){
+                    System.out.println("ventana administradora");
+                }
+                else{
+                    System.out.println("ventana empleado");
+                }   
+            }
+            else
+                JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrecta.", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         else
             JOptionPane.showMessageDialog(rootPane, "Aun existen campos vacios.", "Cuidado!!!", JOptionPane.WARNING_MESSAGE);
@@ -256,4 +269,6 @@ public class Login_Usuario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     String user = "";
     String pass = "";
+    Usuario usua = null;
+    final static UsuarioDAO USUARIO_DAO = new UsuarioDAO();
 }
