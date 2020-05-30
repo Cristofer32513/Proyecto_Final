@@ -26,6 +26,7 @@ public class Prueba extends javax.swing.JFrame {
      */
     public Prueba() {
         initComponents();
+        setLocationRelativeTo(null);
         Categoria categoria = new Categoria();
         categoria.setLocation(0,0);
         categoria.setSize(800, 400);
@@ -58,13 +59,13 @@ public class Prueba extends javax.swing.JFrame {
         venus.setLocation(0,0);
         venus.setSize(800, 400);
         
-        //jPanel1.add(venus, BorderLayout.CENTER);
-        //jPanel1.revalidate();
-        //jPanel1.repaint();
+        jPanel1.add(categoria, BorderLayout.CENTER);
+        jPanel1.revalidate();
+        jPanel1.repaint();
         
-        SwingUtilities.invokeLater(() -> {
-            new VentanaUsuarios().setVisible(true);
-        });
+        //SwingUtilities.invokeLater(() -> {
+        //    new VentanaUsuarios().setVisible(true);
+        //});
     }
 
     /**

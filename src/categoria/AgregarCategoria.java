@@ -30,6 +30,7 @@ public class AgregarCategoria extends javax.swing.JDialog {
         setTitle("Agregar Categoria");
         setIconImage(null);
         setMinimumSize(new java.awt.Dimension(490, 247));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 160));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 160));
@@ -57,7 +58,7 @@ public class AgregarCategoria extends javax.swing.JDialog {
         textAreaDescripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         textAreaDescripcion.setLineWrap(true);
         textAreaDescripcion.setRows(5);
-        textAreaDescripcion.setToolTipText("Descripcion de la Categoria");
+        textAreaDescripcion.setToolTipText("Descripcion de la categoria");
         textAreaDescripcion.setWrapStyleWord(true);
         textAreaDescripcion.setNextFocusableComponent(btnAgregar);
         textAreaDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -72,7 +73,7 @@ public class AgregarCategoria extends javax.swing.JDialog {
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnAgregar.setText("Agregar");
-        btnAgregar.setToolTipText("Agregar la Categoria");
+        btnAgregar.setToolTipText("Agregar la categoria");
         btnAgregar.setNextFocusableComponent(btnCancelar);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +83,7 @@ public class AgregarCategoria extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setToolTipText("Descartar Incgreso de Categoria");
+        btnCancelar.setToolTipText("Descartar ingreso de la categoria");
         btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,10 +155,8 @@ public class AgregarCategoria extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             categoria = new Categoria(1, cajaNombre.getText(), textAreaDescripcion.getText());
 
-            if(CATEGORIA_DAO.agregarCategoria(categoria)){
-                JOptionPane.showMessageDialog(null, "Categoria agregada correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(CATEGORIA_DAO.agregarCategoria(categoria))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al agregar la Categoria.", "Error", JOptionPane.ERROR_MESSAGE);
         }

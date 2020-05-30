@@ -35,6 +35,7 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar Categoria");
         setMinimumSize(new java.awt.Dimension(490, 200));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 200));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 200));
@@ -42,7 +43,8 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnEditar.setText("Editar");
-        btnEditar.setToolTipText("Editar Categoria");
+        btnEditar.setToolTipText("Editar categoria");
+        btnEditar.setNextFocusableComponent(btnEliminar);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -51,7 +53,8 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setToolTipText("Cancelar Accion");
+        btnCancelar.setToolTipText("Cancelar accion");
+        btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -65,6 +68,7 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
         jLabel4.setText("Descripcion:");
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre de la categoria");
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaNombreKeyPressed(evt);
@@ -82,7 +86,9 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
         textAreaDescripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         textAreaDescripcion.setLineWrap(true);
         textAreaDescripcion.setRows(5);
+        textAreaDescripcion.setToolTipText("Descripcion de la categoria");
         textAreaDescripcion.setWrapStyleWord(true);
+        textAreaDescripcion.setNextFocusableComponent(btnEditar);
         textAreaDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 textAreaDescripcionKeyPressed(evt);
@@ -97,11 +103,13 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
         jLabel3.setText("id Categoria:");
 
         cajaIdCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaIdCategoria.setToolTipText("Id de la categoria");
         cajaIdCategoria.setEnabled(false);
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("Eliminar la Categoria");
+        btnEliminar.setToolTipText("Eliminar categoria");
+        btnEliminar.setNextFocusableComponent(btnCancelar);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -178,10 +186,8 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             categoria = new Categoria(Integer.parseInt(cajaIdCategoria.getText()), cajaNombre.getText(), textAreaDescripcion.getText());
 
-            if(CATEGORIA_DAO.modificarCategoria(categoria)){
-                JOptionPane.showMessageDialog(null, "Cambios guardados correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(CATEGORIA_DAO.modificarCategoria(categoria))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al actualizar los datos de la Categoria.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -195,10 +201,8 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(CATEGORIA_DAO.eliminarCategoria(Integer.parseInt(cajaIdCategoria.getText()))){
-            JOptionPane.showMessageDialog(null, "Categoria eliminada correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        if(CATEGORIA_DAO.eliminarCategoria(Integer.parseInt(cajaIdCategoria.getText())))
             this.dispose();
-        }
         else
             JOptionPane.showMessageDialog(null, "Error al elimnar la Categoria.", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed

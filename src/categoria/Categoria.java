@@ -9,7 +9,7 @@ public class Categoria extends javax.swing.JPanel {
 
     public Categoria() {
         initComponents();
-        iniciar();
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
     
     @SuppressWarnings("unchecked")
@@ -36,7 +36,8 @@ public class Categoria extends javax.swing.JPanel {
         etiqueta.setText("Buscar:");
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cajaTexto.setToolTipText("Nombre Categoria");
+        cajaTexto.setToolTipText("Nombre de la categoria");
+        cajaTexto.setNextFocusableComponent(btnLimpiar);
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cajaTextoKeyReleased(evt);
@@ -67,6 +68,7 @@ public class Categoria extends javax.swing.JPanel {
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setToolTipText("Descartar busqueda");
         btnLimpiar.setNextFocusableComponent(btnAgregar);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +78,11 @@ public class Categoria extends javax.swing.JPanel {
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -121,6 +128,8 @@ public class Categoria extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar nueva categoria");
+        btnAgregar.setNextFocusableComponent(cajaTexto);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -155,7 +164,7 @@ public class Categoria extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -165,7 +174,7 @@ public class Categoria extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -219,44 +228,7 @@ public class Categoria extends javax.swing.JPanel {
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
-    
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "id Categoria", "Nombre", "Descripcion"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-    }
-    
+        
     public final void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
@@ -268,11 +240,7 @@ public class Categoria extends javax.swing.JPanel {
 
         tabla.setModel(modeloDatos);
     }
-    
-    public final void iniciar(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-    }
-    
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnLimpiar;
@@ -287,7 +255,6 @@ public class Categoria extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, desc;
     private int id;
-    final static CategoriaDAO CATEGORIA_DAO = new CategoriaDAO();
     final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Categorias";
     AgregarCategoria agregar;
     EliminarOEditarCategoria eliminarOEditar;
