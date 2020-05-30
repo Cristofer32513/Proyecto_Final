@@ -57,8 +57,7 @@ public class ClienteDAO {
             cliente.setCalle(resultado.getString(6));
             cliente.setColonia(resultado.getString(6));
             cliente.setMunicipio(resultado.getString(6));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return cliente;

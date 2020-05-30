@@ -54,8 +54,7 @@ public class ProveedorDAO {
             proveedor.setPrimerApellido(resultado.getString(3));
             proveedor.setSegundoApellido(resultado.getString(4));
             proveedor.setTelefono(resultado.getString(5));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return proveedor;

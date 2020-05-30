@@ -52,8 +52,7 @@ public class CategoriaDAO {
             categoria.setIdCategoria(resultado.getInt(1));
             categoria.setNombre(resultado.getString(2));
             categoria.setDescripcion(resultado.getString(3));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return categoria;

@@ -58,8 +58,7 @@ public class EmpleadoDAO {
             empleado.setColonia(resultado.getString(7));
             empleado.setMunicipio(resultado.getString(8));
             empleado.setTelefono(resultado.getString(9));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return empleado;
@@ -82,8 +81,7 @@ public class EmpleadoDAO {
             empleado.setColonia(resultado.getString(7));
             empleado.setMunicipio(resultado.getString(8));
             empleado.setTelefono(resultado.getString(9));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return empleado;

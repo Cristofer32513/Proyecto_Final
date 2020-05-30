@@ -52,8 +52,7 @@ public class UsuarioDAO {
                 usua.setIdEmpleado(resultado.getInt(1));
                 usua.setUsuario(resultado.getString(2));
                 usua.setContraseña(resultado.getString(3));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return usua;
@@ -70,8 +69,7 @@ public class UsuarioDAO {
                 usua.setIdEmpleado(resultado.getInt(1));
                 usua.setUsuario(resultado.getString(2));
                 usua.setContraseña(resultado.getString(3));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return usua;

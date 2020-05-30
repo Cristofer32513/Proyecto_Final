@@ -56,12 +56,9 @@ public class ProductoDAO {
             producto.setStock(resultado.getInt(5));
             producto.SetIdProveedor(resultado.getInt(6));
             producto.SetIdCategoria(resultado.getInt(7));
-        }
-        catch (SQLException e) {return null;}
+        } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
 
         return producto;
-    }
-    
-            
+    }           
 }
