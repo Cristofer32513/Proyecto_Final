@@ -7,6 +7,7 @@ package vista;
 
 import categoria.Categoria;
 import cliente.Cliente;
+import empleado.Empleado;
 import java.awt.BorderLayout;
 import login.Login;
 
@@ -33,7 +34,11 @@ public class Prueba extends javax.swing.JFrame {
         cliente.setLocation(0,0);
         cliente.setSize(800, 400);
         
-        jPanel1.add(cliente, BorderLayout.CENTER);
+        Empleado empleado = new Empleado();
+        empleado.setLocation(0,0);
+        empleado.setSize(800, 400);
+        
+        jPanel1.add(empleado, BorderLayout.CENTER);
         jPanel1.revalidate();
         jPanel1.repaint();
     }

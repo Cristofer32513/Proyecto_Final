@@ -9,6 +9,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Cliente;
+import modelo.Empleado;
 import modelo.Usuario;
 
 public class Conexion {
@@ -188,6 +189,67 @@ public class Conexion {
             return ejecucion==1;
         }
         catch(SQLException e){return false;}
+    }
+    
+    public boolean ejecutarAlta(String sql, Empleado empleado) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, empleado.getNombre());
+            pstm.setString(2, empleado.getPrimerApellido());
+            pstm.setString(3, empleado.getSegundoApellido());
+            pstm.setString(4, empleado.getCargo());
+            pstm.setString(5, empleado.getCalle());
+            pstm.setString(6, empleado.getColonia());
+            pstm.setString(7, empleado.getMunicipio());
+            pstm.setString(8, empleado.getTelefono());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+    
+    public boolean ejecutarModificacion(String sql, Empleado empleado) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, empleado.getNombre());
+            pstm.setString(2, empleado.getPrimerApellido());
+            pstm.setString(3, empleado.getSegundoApellido());
+            pstm.setString(4, empleado.getCargo());
+            pstm.setString(5, empleado.getCalle());
+            pstm.setString(6, empleado.getColonia());
+            pstm.setString(7, empleado.getMunicipio());
+            pstm.setString(8, empleado.getTelefono());
+            pstm.setInt(9, empleado.getIdEmpleado());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            return false;}
+    }
+    
+    public ResultSet ejecutarConsultaID(String sql, String nombre, String primerAp, String segundoAp, String cargo, String calle, String colonia, String municipio, String telefono) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, nombre);
+            pstm.setString(2, primerAp);
+            pstm.setString(3, segundoAp);
+            pstm.setString(4, cargo);
+            pstm.setString(5, calle);
+            pstm.setString(6, colonia);
+            pstm.setString(7, municipio);
+            pstm.setString(8, telefono);
+            rs=pstm.executeQuery();
+        }
+        catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo ejecutar la consulta SQL" + e.getMessage(), "Error de conexion", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return rs;
     }
     
     

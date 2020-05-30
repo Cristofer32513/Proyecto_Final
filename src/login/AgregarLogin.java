@@ -11,7 +11,6 @@ public class AgregarLogin extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("add.png"))); // NOI18N
     }
     
     public AgregarLogin(java.awt.Frame parent, boolean modal, int id) {
@@ -19,7 +18,6 @@ public class AgregarLogin extends javax.swing.JDialog {
         initComponents();
         this.id = id;
         setLocationRelativeTo(null);
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("add.png"))); // NOI18N
     }
     
     @SuppressWarnings("unchecked")
@@ -36,7 +34,9 @@ public class AgregarLogin extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Categoria");
         setIconImage(null);
-        setMinimumSize(new java.awt.Dimension(490, 247));
+        setMaximumSize(new java.awt.Dimension(385, 170));
+        setMinimumSize(new java.awt.Dimension(385, 170));
+        setPreferredSize(new java.awt.Dimension(385, 170));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 160));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 160));
@@ -94,7 +94,7 @@ public class AgregarLogin extends javax.swing.JDialog {
                             .addComponent(cajaPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(cajaUsuario)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                        .addGap(107, 107, 107)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -118,15 +118,11 @@ public class AgregarLogin extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
