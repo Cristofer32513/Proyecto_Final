@@ -61,6 +61,7 @@ public class Proveedor {
         this.telefono = carrera;
     }
     
+    
     @Override
     public String toString() {
         return "Proveedor [idProveedor=" + idProveedor + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido="

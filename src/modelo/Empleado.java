@@ -11,7 +11,6 @@ public class Empleado {
     private String municipio;
     private String telefono;
     
-
     public Empleado() {
         super();
         this.idEmpleado = 0;
@@ -102,6 +101,7 @@ public class Empleado {
         this.telefono = carrera;
     }
 
+    
     @Override
     public String toString() {
         return "Empleado{" + "idEmpleado=" + idEmpleado + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + ", cargo=" + cargo + ", calle=" + calle + ", colonia=" + colonia + ", municipio=" + municipio + ", telefono=" + telefono + '}';

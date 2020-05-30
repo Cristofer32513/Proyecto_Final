@@ -2,7 +2,6 @@ package modelo;
 
 import java.util.Calendar;
 
-
 public class Venta {
     private int idVenta;
     private int idEmpleado;
