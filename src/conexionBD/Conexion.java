@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Cliente;
 import modelo.Empleado;
+import modelo.Proveedor;
 import modelo.Usuario;
 
 public class Conexion {
@@ -250,6 +251,37 @@ public class Conexion {
         }
         
         return rs;
+    }
+    
+    public boolean ejecutarAlta(String sql, Proveedor proveedor) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, proveedor.getNombre());
+            pstm.setString(2, proveedor.getPrimerApellido());
+            pstm.setString(3, proveedor.getSegundoApellido());
+            pstm.setString(4, proveedor.getTelefono());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+	
+    public boolean ejecutarModificacion(String sql, Proveedor proveedor) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, proveedor.getNombre());
+            pstm.setString(2, proveedor.getPrimerApellido());
+            pstm.setString(3, proveedor.getSegundoApellido());
+            pstm.setString(4, proveedor.getTelefono());
+            pstm.setInt(5, proveedor.getIdProveedor());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
     }
     
     
