@@ -7,6 +7,7 @@ package vista;
 
 import categoria.Categoria;
 import java.awt.BorderLayout;
+import login.Login;
 
 /**
  *
@@ -22,7 +23,13 @@ public class Prueba extends javax.swing.JFrame {
         Categoria categoria = new Categoria();
         categoria.setLocation(0,0);
         categoria.setSize(800, 400);
-        jPanel1.add(categoria, BorderLayout.CENTER);
+        
+        Login login = new Login();
+        login.setLocation(0,0);
+        login.setSize(800, 400);
+        
+        
+        jPanel1.add(login, BorderLayout.CENTER);
         jPanel1.revalidate();
         jPanel1.repaint();
     }
@@ -104,10 +111,8 @@ public class Prueba extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Prueba().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Prueba().setVisible(true);
         });
     }
 
