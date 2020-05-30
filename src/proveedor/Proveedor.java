@@ -1,6 +1,5 @@
 package proveedor;
 
-import controlador.ProveedorDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import modelo.ResultSetTableModel;
@@ -9,7 +8,7 @@ public class Proveedor extends javax.swing.JPanel {
 
     public Proveedor() {
         initComponents();
-        iniciar();
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
         
     @SuppressWarnings("unchecked")
@@ -40,7 +39,10 @@ public class Proveedor extends javax.swing.JPanel {
         etiqueta.setText("Buscar:");
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTexto.setToolTipText("Buscar");
         cajaTexto.setEnabled(false);
+        cajaTexto.setName(""); // NOI18N
+        cajaTexto.setNextFocusableComponent(btnLimpiar);
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cajaTextoKeyReleased(evt);
@@ -53,6 +55,7 @@ public class Proveedor extends javax.swing.JPanel {
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setToolTipText("Limpiar area de busqueda");
         btnLimpiar.setEnabled(false);
         btnLimpiar.setNextFocusableComponent(btnAgregar);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +149,8 @@ public class Proveedor extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar Proveedor");
+        btnAgregar.setNextFocusableComponent(radioNombre);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -178,25 +183,26 @@ public class Proveedor extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(radioNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioPApellido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioSApellido)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(etiqueta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgregar)
-                        .addGap(0, 208, Short.MAX_VALUE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1))
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(radioNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radioPApellido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radioSApellido))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(etiqueta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpiar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAgregar)))
+                        .addGap(0, 208, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -225,19 +231,19 @@ public class Proveedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNombreActionPerformed
-        etiqueta.setText("Nombre:");
+        cajaTexto.setToolTipText("Nombre del proveedor");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioNombreActionPerformed
 
     private void radioPApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPApellidoActionPerformed
-        etiqueta.setText("Primer Apellido:");
+        cajaTexto.setToolTipText("Primer apellido del proveedor");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioPApellidoActionPerformed
 
     private void radioSApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSApellidoActionPerformed
-        etiqueta.setText("Segundo Apellido:");
+        cajaTexto.setToolTipText("Segundo apellido del proveedor");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioSApellidoActionPerformed
@@ -250,24 +256,22 @@ public class Proveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_cajaTextoKeyTyped
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = 0;
-        nom = pA = sA = tel = "";
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false, true);
+        limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    @SuppressWarnings("Convert2Lambda")
+    private void limpiar(){
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        grupo.clearSelection();
+        cajaTexto.setText("");
+        cajaTexto.setToolTipText("Buscar");
+        habilitarCampos(false, false, true);
+    }
+    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         agregar = new AgregarProveedor(null, true);
         agregar.setVisible(true);
         agregar.dispose();
-        btnLimpiar.setEnabled(true);
-        btnLimpiar.doClick();
-        btnLimpiar.setEnabled(false);
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     public void buscar(){
@@ -301,10 +305,7 @@ public class Proveedor extends javax.swing.JPanel {
             eliminar = new EliminarOEditarProveedor(null, true, id, nom, pA, sA, tel);
             eliminar.setVisible(true);
             eliminar.dispose();
-            btnLimpiar.setEnabled(true);
-            btnLimpiar.doClick();
-            btnLimpiar.setEnabled(false);
-            actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+            limpiar();
             
             habilitarCampos(cajaTexto.isEnabled(), btnLimpiar.isEnabled(), true);
         } catch (NumberFormatException e) {}
@@ -329,72 +330,20 @@ public class Proveedor extends javax.swing.JPanel {
         buscar();
     }//GEN-LAST:event_cajaTextoKeyReleased
 
-    public void habilitarCampos(boolean caja, boolean btnLim, boolean btnAgr){
+    private void habilitarCampos(boolean caja, boolean btnLim, boolean btnAgr){
         cajaTexto.setEnabled(caja);
         cajaTexto.setText("");
         btnLimpiar.setEnabled(btnLim); 
         btnAgregar.setEnabled(btnAgr);        
     }
     
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
-    
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "id Proveedor", "Nombre", "Primer Apellido", "Segundo Apellido", "Telefono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-    }
-    
-    public void nuevo(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = 0;
-        nom = pA = sA = tel = "";
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false, true);
-    }
-    
-    public final void actualizarTabla(String consulta){
+      
+    private void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
         ResultSetTableModel modeloDatos = null;
@@ -405,11 +354,7 @@ public class Proveedor extends javax.swing.JPanel {
 
         tabla.setModel(modeloDatos);
     }
-    
-    public final void iniciar(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnLimpiar;
@@ -428,7 +373,6 @@ public class Proveedor extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, pA, sA, tel;
     private int id;
-    final static ProveedorDAO PROVEEDOR_DAO = new ProveedorDAO();
     final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Proveedores";
     private AgregarProveedor agregar;
     private EliminarOEditarProveedor eliminar;

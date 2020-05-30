@@ -34,11 +34,13 @@ public class AgregarProveedor extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(470, 225));
         setMinimumSize(new java.awt.Dimension(470, 225));
         setPreferredSize(new java.awt.Dimension(470, 225));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 245));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 245));
 
         cajaPApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaPApellido.setToolTipText("Primer apellido del proveedor");
         cajaPApellido.setNextFocusableComponent(cajaSApellido);
         cajaPApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -50,6 +52,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
         });
 
         cajaSApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaSApellido.setToolTipText("Segundo apellido del proveedor");
         cajaSApellido.setNextFocusableComponent(cajaTelefono);
         cajaSApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -61,6 +64,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
         });
 
         cajaTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTelefono.setToolTipText("Telefono del proveedor");
         cajaTelefono.setNextFocusableComponent(btnAgregar);
         cajaTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -73,6 +77,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar proveedor");
         btnAgregar.setName(""); // NOI18N
         btnAgregar.setNextFocusableComponent(btnCancelar);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +88,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Descartar  ingreso de proveedor");
         btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +109,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
         jLabel5.setText("Telefono:");
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre del proveedor");
         cajaNombre.setNextFocusableComponent(cajaPApellido);
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -221,14 +228,11 @@ public class AgregarProveedor extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             proveedor = new Proveedor(id, cajaNombre.getText(), cajaPApellido.getText(), cajaSApellido.getText(), cajaTelefono.getText());
 
-            if(PROVEEDOR_DAO.agregarProvedor(proveedor)){
-                JOptionPane.showMessageDialog(null, "Proveedor agregado correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(PROVEEDOR_DAO.agregarProvedor(proveedor))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al agregar al Proveedor.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Aun existen campos vacios.", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -249,19 +253,19 @@ public class AgregarProveedor extends javax.swing.JDialog {
             soloLetras(evt);
     }//GEN-LAST:event_cajaNombreKeyTyped
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void soloNumeros(KeyEvent evt) {
+    private void soloNumeros(KeyEvent evt) {
         char c = evt.getKeyChar();
         if((c < '0' || c > '9') && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))

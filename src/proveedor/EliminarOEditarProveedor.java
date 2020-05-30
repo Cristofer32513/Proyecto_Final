@@ -7,12 +7,6 @@ import modelo.Proveedor;
 
 public class EliminarOEditarProveedor extends javax.swing.JDialog {
 
-    public EliminarOEditarProveedor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        setLocationRelativeTo(null);
-    }
-    
     public EliminarOEditarProveedor(java.awt.Frame proveedor, boolean modal, int id, String nombre, String primApe, String segApe, String tel) {
         super(proveedor, modal);
         initComponents();
@@ -49,11 +43,14 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(450, 265));
         setMinimumSize(new java.awt.Dimension(450, 265));
         setPreferredSize(new java.awt.Dimension(450, 265));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 245));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 245));
 
         cajaPApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaPApellido.setToolTipText("Primer apellido del proveedor");
+        cajaPApellido.setNextFocusableComponent(cajaSApellido);
         cajaPApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaPApellidoKeyPressed(evt);
@@ -64,6 +61,8 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
         });
 
         cajaSApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaSApellido.setToolTipText("Segundo apellido del proveedor");
+        cajaSApellido.setNextFocusableComponent(cajaTelefono);
         cajaSApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaSApellidoKeyPressed(evt);
@@ -74,6 +73,8 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
         });
 
         cajaTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTelefono.setToolTipText("Telefono del proveedor");
+        cajaTelefono.setNextFocusableComponent(btnEditar);
         cajaTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaTelefonoKeyPressed(evt);
@@ -96,6 +97,8 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
         jLabel5.setText("Telefono:");
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre del proveedor");
+        cajaNombre.setNextFocusableComponent(cajaPApellido);
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaNombreKeyPressed(evt);
@@ -106,6 +109,7 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
         });
 
         cajaIdProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaIdProveedor.setToolTipText("Id del proveedor");
         cajaIdProveedor.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -113,7 +117,8 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setNextFocusableComponent(btnEliminar);
+        btnCancelar.setToolTipText("Descartar accion");
+        btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -122,6 +127,7 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("Eliminar proveedor");
         btnEliminar.setNextFocusableComponent(btnCancelar);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,8 +136,9 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
         });
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.setNextFocusableComponent(btnCancelar);
+        btnEditar.setText("Actualizar");
+        btnEditar.setToolTipText("Actualizar registro con los nuevos datos");
+        btnEditar.setNextFocusableComponent(btnEliminar);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -218,10 +225,8 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(PROVEEDOR_DAO.eliminarProveedor(Integer.parseInt(cajaIdProveedor.getText()))){
-            JOptionPane.showMessageDialog(null, "Proveedor eliminado correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        if(PROVEEDOR_DAO.eliminarProveedor(Integer.parseInt(cajaIdProveedor.getText())))
             this.dispose();
-        }
         else
            JOptionPane.showMessageDialog(null, "Error al eliminar al Proveedor.", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -235,14 +240,11 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             proveedor = new Proveedor(Integer.parseInt(cajaIdProveedor.getText()), cajaNombre.getText(), cajaPApellido.getText(), cajaSApellido.getText(), cajaTelefono.getText());
 
-            if(PROVEEDOR_DAO.modificarProveedor(proveedor)){
-                JOptionPane.showMessageDialog(null, "Cambios guardados correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(PROVEEDOR_DAO.modificarProveedor(proveedor))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al actulizar los datos del Proveedor.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Campo(s) vacio(s).", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -294,19 +296,19 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
             soloNumeros(evt);
     }//GEN-LAST:event_cajaTelefonoKeyTyped
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void soloNumeros(KeyEvent evt) {
+    private void soloNumeros(KeyEvent evt) {
         char c = evt.getKeyChar();
         if((c < '0' || c > '9') && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))
