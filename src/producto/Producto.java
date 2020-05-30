@@ -1,0 +1,487 @@
+package producto;
+
+import controlador.ProductoDAO;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import modelo.ResultSetTableModel;
+
+public class Producto extends javax.swing.JPanel {
+
+    public Producto() {
+        initComponents();
+        iniciar();
+    }
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        grupo = new javax.swing.ButtonGroup();
+        etiqueta = new javax.swing.JLabel();
+        cajaTexto = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnLimpiar = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        radioNombre = new javax.swing.JRadioButton();
+        radioMarca = new javax.swing.JRadioButton();
+        radioProveedor = new javax.swing.JRadioButton();
+        btnAgregar = new javax.swing.JButton();
+        radioCategoria = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+
+        setMaximumSize(new java.awt.Dimension(800, 400));
+        setMinimumSize(new java.awt.Dimension(800, 400));
+        setPreferredSize(new java.awt.Dimension(800, 400));
+
+        etiqueta.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        etiqueta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta.setText("Buscar:");
+
+        cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTexto.setEnabled(false);
+        cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cajaTextoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cajaTextoKeyTyped(evt);
+            }
+        });
+
+        btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setEnabled(false);
+        btnLimpiar.setNextFocusableComponent(btnAgregar);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "id Producto", "Nombre", "Marca", "Precio", "Stock", "id_Proveedor", "id_Categoria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tablaMouseReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla);
+
+        grupo.add(radioNombre);
+        radioNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        radioNombre.setText("Nombre");
+        radioNombre.setNextFocusableComponent(radioMarca);
+        radioNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioNombreActionPerformed(evt);
+            }
+        });
+        radioNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                radioNombreKeyPressed(evt);
+            }
+        });
+
+        grupo.add(radioMarca);
+        radioMarca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        radioMarca.setText("Marca");
+        radioMarca.setNextFocusableComponent(radioProveedor);
+        radioMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioMarcaActionPerformed(evt);
+            }
+        });
+        radioMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                radioMarcaKeyPressed(evt);
+            }
+        });
+
+        grupo.add(radioProveedor);
+        radioProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        radioProveedor.setText("Proveedor");
+        radioProveedor.setNextFocusableComponent(radioCategoria);
+        radioProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioProveedorActionPerformed(evt);
+            }
+        });
+        radioProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                radioProveedorKeyPressed(evt);
+            }
+        });
+
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        grupo.add(radioCategoria);
+        radioCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        radioCategoria.setText("Categoria");
+        radioCategoria.setNextFocusableComponent(cajaTexto);
+        radioCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioCategoriaActionPerformed(evt);
+            }
+        });
+        radioCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                radioCategoriaKeyPressed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Productos");
+        jLabel6.setPreferredSize(new java.awt.Dimension(130, 30));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(radioNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(radioMarca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(radioProveedor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(radioCategoria)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(etiqueta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpiar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAgregar)
+                                .addGap(0, 200, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioNombre)
+                    .addComponent(radioMarca)
+                    .addComponent(radioProveedor)
+                    .addComponent(radioCategoria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaTexto)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void radioNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNombreActionPerformed
+        etiqueta.setText("Nombre:");
+        limpiarTabla();
+        habilitarCampos(true, true, true);
+    }//GEN-LAST:event_radioNombreActionPerformed
+
+    private void radioMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMarcaActionPerformed
+        etiqueta.setText("Marca:");
+        limpiarTabla();
+        habilitarCampos(true, true, true);
+    }//GEN-LAST:event_radioMarcaActionPerformed
+
+    private void radioProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioProveedorActionPerformed
+        etiqueta.setText("id Proveedor:");
+        limpiarTabla();
+        ConsultarProveedor consultar = new ConsultarProveedor(null, true);
+        consultar.setVisible(true);
+        habilitarCampos(false, true, true);
+        cajaTexto.setText(String.valueOf(consultar.id));
+        consultar.dispose();
+        buscar();
+    }//GEN-LAST:event_radioProveedorActionPerformed
+
+    private void cajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaTextoKeyTyped
+        if (cajaTexto.getText().length() == 45) 
+            evt.consume();
+        else
+            soloLetras(evt);
+    }//GEN-LAST:event_cajaTextoKeyTyped
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        grupo.clearSelection();
+        id = idProv = idCat = 0;
+        nom = mar = pre = sto = "";
+        cajaTexto.setText("");
+        etiqueta.setText("Buscar...");
+        habilitarCampos(false, false, true);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        agregar = new AgregarProducto(null, true);
+        agregar.setVisible(true);
+        agregar.dispose();
+        btnLimpiar.setEnabled(true);
+        btnLimpiar.doClick();
+        btnLimpiar.setEnabled(false);
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    public void buscar(){
+        if(radioNombre.isSelected()){
+            if(!cajaTexto.getText().equals(""))
+                actualizarTabla("SELECT * FROM Productos WHERE Nombre LIKE '%"+cajaTexto.getText()+"%'");
+            else
+                limpiarTabla();
+        }
+        else if(radioMarca.isSelected()){
+            if(!cajaTexto.getText().equals(""))
+                actualizarTabla("SELECT * FROM Productos WHERE Marca LIKE '%"+cajaTexto.getText()+"%'");
+            else
+                limpiarTabla();
+        }
+        else if(radioProveedor.isSelected()){
+            if(!cajaTexto.getText().equals(""))
+                actualizarTabla("SELECT * FROM Productos WHERE id_Proveedor = '"+cajaTexto.getText()+"'");
+            else
+                limpiarTabla();
+        }
+        else if(radioCategoria.isSelected()){
+            if(!cajaTexto.getText().equals(""))
+                actualizarTabla("SELECT * FROM Productos WHERE id_Categoria = '"+cajaTexto.getText()+"'");
+            else
+                limpiarTabla();
+        }
+    }
+    
+    private void tablaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseReleased
+        try {
+            id = Integer.parseInt(String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 0)));
+            nom = (String) tabla.getValueAt(tabla.getSelectedRow(), 1);
+            mar = (String) tabla.getValueAt(tabla.getSelectedRow(), 2);
+            pre = String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 3));
+            sto = String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 4)) ;
+            idProv = Integer.parseInt(String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 5)));
+            idCat = Integer.parseInt(String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 6)));
+
+            eliminar = new EliminarOEditarProducto(null, true, id, nom, mar, Double.parseDouble(pre), Integer.parseInt(sto), idProv, idCat);
+            eliminar.setVisible(true);
+            eliminar.dispose();
+            btnLimpiar.setEnabled(true);
+            btnLimpiar.doClick();
+            btnLimpiar.setEnabled(false);
+            actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+            
+            habilitarCampos(cajaTexto.isEnabled(), btnLimpiar.isEnabled(), true);
+        } catch (NumberFormatException e) {}
+    }//GEN-LAST:event_tablaMouseReleased
+
+    private void radioCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCategoriaActionPerformed
+        etiqueta.setText("id Categoria:");
+        limpiarTabla();
+        ConsultarCategoria consultar = new ConsultarCategoria(null, true);
+        consultar.setVisible(true);
+        habilitarCampos(false, true, true);
+        cajaTexto.setText(String.valueOf(consultar.id));
+        consultar.dispose();
+        buscar();
+    }//GEN-LAST:event_radioCategoriaActionPerformed
+
+    private void radioNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_radioNombreKeyPressed
+        if(evt.getKeyCode() == 10)
+            radioNombre.doClick();
+    }//GEN-LAST:event_radioNombreKeyPressed
+
+    private void radioMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_radioMarcaKeyPressed
+        if(evt.getKeyCode() == 10)
+            radioMarca.doClick();
+    }//GEN-LAST:event_radioMarcaKeyPressed
+
+    private void radioProveedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_radioProveedorKeyPressed
+        if(evt.getKeyCode() == 10)
+            radioProveedor.doClick();
+    }//GEN-LAST:event_radioProveedorKeyPressed
+
+    private void radioCategoriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_radioCategoriaKeyPressed
+        if(evt.getKeyCode() == 10)
+            radioCategoria.doClick();
+    }//GEN-LAST:event_radioCategoriaKeyPressed
+
+    private void cajaTextoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaTextoKeyReleased
+        buscar();
+    }//GEN-LAST:event_cajaTextoKeyReleased
+
+    public void habilitarCampos(boolean caja, boolean btnLim, boolean btnAgr){
+        cajaTexto.setEnabled(caja);
+        cajaTexto.setText("");
+        btnLimpiar.setEnabled(btnLim); 
+        btnAgregar.setEnabled(btnAgr);          
+    }
+    
+    public void soloLetras(KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
+            evt.consume();
+    }
+    
+    public void nuevo(){
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        grupo.clearSelection();
+        id = idProv = idCat = 0;
+        nom = mar = pre = sto = "";
+        cajaTexto.setText("");
+        etiqueta.setText("Buscar...");
+        habilitarCampos(false, false, true);
+    }
+    
+    public void limpiarTabla(){
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "id Producto", "Nombre", "Marca", "Precio", "Stock", "id_Proveedor", "id_Categoria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+    }
+    
+    public final void actualizarTabla(String consulta){
+        String controlador = "com.mysql.cj.jdbc.Driver";
+        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+        ResultSetTableModel modeloDatos = null;
+
+        try {
+            modeloDatos = new ResultSetTableModel(controlador, url, consulta);
+        } catch (ClassNotFoundException | SQLException e) {}
+
+        tabla.setModel(modeloDatos);
+    }
+    
+    public final void iniciar(){
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+    }
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JTextField cajaTexto;
+    private javax.swing.JLabel etiqueta;
+    private javax.swing.ButtonGroup grupo;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JRadioButton radioCategoria;
+    private javax.swing.JRadioButton radioMarca;
+    private javax.swing.JRadioButton radioNombre;
+    private javax.swing.JRadioButton radioProveedor;
+    private javax.swing.JTable tabla;
+    // End of variables declaration//GEN-END:variables
+    private String nom, mar, pre, sto;
+    private int id, idProv, idCat;
+    final static ProductoDAO PRODUCTO_DAO = new ProductoDAO();
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Productos";
+    private AgregarProducto agregar;
+    private EliminarOEditarProducto eliminar;
+}

@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Cliente;
 import modelo.Empleado;
+import modelo.Prod;
+import modelo.Producto;
 import modelo.Proveedor;
 import modelo.Usuario;
 
@@ -283,6 +285,43 @@ public class Conexion {
         }
         catch(SQLException e){return false;}
     }
+    
+    public boolean ejecutarAlta(String sql, Producto producto) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, producto.getNombre());
+            pstm.setString(2, producto.getMarca());
+            pstm.setDouble(3, producto.getPrecio());
+            pstm.setInt(4, producto.getStock());
+            pstm.setInt(5, producto.getIdProveedor());
+            pstm.setInt(6, producto.getIdCategoria());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+	
+    public boolean ejecutarModificacion(String sql, Producto producto) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, producto.getNombre());
+            pstm.setString(2, producto.getMarca());
+            pstm.setDouble(3, producto.getPrecio());
+            pstm.setInt(4, producto.getStock());
+            pstm.setInt(5, producto.getIdProveedor());
+            pstm.setInt(6, producto.getIdCategoria());
+            pstm.setInt(7, producto.getIdProducto());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+    
+    
     
     
     

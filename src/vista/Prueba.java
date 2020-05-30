@@ -10,6 +10,7 @@ import cliente.Cliente;
 import empleado.Empleado;
 import java.awt.BorderLayout;
 import login.Login;
+import producto.Producto;
 import proveedor.Proveedor;
 
 /**
@@ -43,7 +44,11 @@ public class Prueba extends javax.swing.JFrame {
         prov.setLocation(0,0);
         prov.setSize(800, 400);
         
-        jPanel1.add(prov, BorderLayout.CENTER);
+        Producto prod = new Producto();
+        prod.setLocation(0,0);
+        prod.setSize(800, 400);
+        
+        jPanel1.add(prod, BorderLayout.CENTER);
         jPanel1.revalidate();
         jPanel1.repaint();
     }
