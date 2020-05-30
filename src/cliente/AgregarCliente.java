@@ -40,12 +40,14 @@ public class AgregarCliente extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(408, 325));
         setMinimumSize(new java.awt.Dimension(408, 325));
         setPreferredSize(new java.awt.Dimension(408, 325));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(395, 289));
         jPanel1.setMinimumSize(new java.awt.Dimension(395, 289));
         jPanel1.setPreferredSize(new java.awt.Dimension(395, 289));
 
         cajaPApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaPApellido.setToolTipText("Primer apellido del cliente");
         cajaPApellido.setNextFocusableComponent(cajaSApellido);
         cajaPApellido.setPreferredSize(new java.awt.Dimension(240, 23));
         cajaPApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -58,6 +60,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         });
 
         cajaSApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaSApellido.setToolTipText("Segundo apellido del cliente");
         cajaSApellido.setNextFocusableComponent(cajaTelefono);
         cajaSApellido.setPreferredSize(new java.awt.Dimension(240, 23));
         cajaSApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -70,6 +73,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         });
 
         cajaTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTelefono.setToolTipText("Telefono del cliente");
         cajaTelefono.setNextFocusableComponent(cajaCalle);
         cajaTelefono.setPreferredSize(new java.awt.Dimension(240, 23));
         cajaTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -83,6 +87,7 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar cliente");
         btnAgregar.setNextFocusableComponent(btnCancelar);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +97,7 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Descartar ingreso cliente");
         btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +118,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         jLabel5.setText("Telefono:");
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre del cliente");
         cajaNombre.setNextFocusableComponent(cajaPApellido);
         cajaNombre.setPreferredSize(new java.awt.Dimension(240, 23));
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -134,6 +141,7 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         comboMunicipio.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         comboMunicipio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Municipio...", "Apozol", "Apulco", "Atolinga", "Benito Juárez", "Calera", "Cañitas de Felipe Pescador", "Chalchihuites", "Concepción del Oro", "Cuauhtémoc", "El Plateado de Joaquín Amaro", "El Salvador", "Fresnillo", "Genaro Codina", "General Enrique Estrada", "General Francisco R. Murguía", "General Pánfilo Natera", "Guadalupe", "Huanusco", "Jalpa", "Jerez", "Jiménez del Teul", "Juan Aldama", "Juchipila", "Loreto", "Luis Moya", "Mazapil", "Melchor Ocampo", "Mezquital del Oro", "Miguel Auza", "Momax", "Monte Escobedo", "Morelos", "Moyahua de Estrada", "Nochistlán de Mejía", "Noria de Ángeles", "Ojocaliente", "Pánuco", "Pinos", "Río Grande", "Saín Alto", "Santa María de la Paz", "Sombrerete", "Susticacán", "Tabasco", "Tepechitlán", "Tepetongo", "Teúl de González Ortega", "Tlaltenango de Sánchez Román", "Trancoso", "Trinidad García de la Cadena", "Valparaíso", "Vetagrande", "Villa de Cos", "Villa García", "Villa González Ortega", "Villa Hidalgo ", "Villanueva", "Zacatecas" }));
+        comboMunicipio.setToolTipText("Municipio del cliente");
         comboMunicipio.setNextFocusableComponent(btnAgregar);
         comboMunicipio.setPreferredSize(new java.awt.Dimension(240, 23));
         comboMunicipio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -143,6 +151,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         });
 
         cajaColonia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaColonia.setToolTipText("Clonia del cliente");
         cajaColonia.setNextFocusableComponent(comboMunicipio);
         cajaColonia.setPreferredSize(new java.awt.Dimension(240, 23));
         cajaColonia.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -155,6 +164,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         });
 
         cajaCalle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaCalle.setToolTipText("Calle del cliente");
         cajaCalle.setNextFocusableComponent(cajaColonia);
         cajaCalle.setPreferredSize(new java.awt.Dimension(240, 23));
         cajaCalle.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -287,14 +297,11 @@ public class AgregarCliente extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             cliente = new Cliente(0, cajaNombre.getText(), cajaPApellido.getText(), cajaSApellido.getText(), cajaTelefono.getText(), cajaCalle.getText(), cajaColonia.getText(), comboMunicipio.getSelectedItem().toString());
 
-            if(CLIENTE_DAO.agregarCliente(cliente)){
-                JOptionPane.showMessageDialog(null, "Cliente agregado correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(CLIENTE_DAO.agregarCliente(cliente))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al agregar el Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Aun existen campos vacios.", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -317,52 +324,52 @@ public class AgregarCliente extends javax.swing.JDialog {
 
     private void comboMunicipioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboMunicipioKeyPressed
         if(evt.getKeyCode() == 10)
-        btnAgregar.doClick();
+            btnAgregar.doClick();
     }//GEN-LAST:event_comboMunicipioKeyPressed
 
     private void cajaColoniaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaColoniaKeyPressed
         if(evt.getKeyCode() == 10)
-        btnAgregar.doClick();
+            btnAgregar.doClick();
     }//GEN-LAST:event_cajaColoniaKeyPressed
 
     private void cajaColoniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaColoniaKeyTyped
         if (cajaColonia.getText().length() == 45)
-        evt.consume();
+            evt.consume();
         else
-        soloLetras(evt);
+            soloLetras(evt);
     }//GEN-LAST:event_cajaColoniaKeyTyped
 
     private void cajaCalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaCalleKeyPressed
         if(evt.getKeyCode() == 10)
-        btnAgregar.doClick();
+            btnAgregar.doClick();
     }//GEN-LAST:event_cajaCalleKeyPressed
 
     private void cajaCalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaCalleKeyTyped
         if (cajaCalle.getText().length() == 45)
-        evt.consume();
+            evt.consume();
         else
-        sinCaracteresEspeciales(evt);
+            sinCaracteresEspeciales(evt);
     }//GEN-LAST:event_cajaCalleKeyTyped
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void soloNumeros(KeyEvent evt) {
+    private void soloNumeros(KeyEvent evt) {
         char c = evt.getKeyChar();
         if((c < '0' || c > '9'))
             evt.consume();
     }
     
-    public void sinCaracteresEspeciales(KeyEvent evt) {
+    private void sinCaracteresEspeciales(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))

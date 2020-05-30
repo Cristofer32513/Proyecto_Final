@@ -90,10 +90,10 @@
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="etiqueta" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cajaTexto" alignment="3" pref="25" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnLimpiar" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="btnAgregar" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="cajaTexto" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -159,7 +159,7 @@
           <Dimension value="[6, 25]"/>
         </Property>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
+          <ComponentRef name="btnLimpiar"/>
         </Property>
       </Properties>
       <Events>
@@ -263,7 +263,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Segundo Apellido"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="cajaTexto"/>
+          <ComponentRef name="radioCalle"/>
         </Property>
       </Properties>
       <Events>
@@ -281,7 +281,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Agregar"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
+          <ComponentRef name="radioNombre"/>
         </Property>
       </Properties>
       <Events>
@@ -298,7 +298,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Calle"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="cajaTexto"/>
+          <ComponentRef name="radioColonia"/>
         </Property>
       </Properties>
       <Events>
@@ -316,7 +316,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Colonia"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="cajaTexto"/>
+          <ComponentRef name="radioMunicipio"/>
         </Property>
       </Properties>
       <Events>

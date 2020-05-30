@@ -7,12 +7,6 @@ import javax.swing.JOptionPane;
 
 public class EliminarOEditarCliente extends javax.swing.JDialog {
 
-    public EliminarOEditarCliente(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        setLocationRelativeTo(null);
-    }
-    
     public EliminarOEditarCliente(java.awt.Frame proveedor, boolean modal, int id, String nombre, String primApe, String segApe, String tel, String call, String col, String mun) {
         super(proveedor, modal);
         initComponents();
@@ -26,8 +20,7 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         cajaColonia.setText(col);
         comboMunicipio.setSelectedItem(mun);
     }
-    
-    
+      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,6 +57,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(490, 264));
 
         cajaPApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaPApellido.setToolTipText("Primer apellido del cliente");
+        cajaPApellido.setNextFocusableComponent(cajaSApellido);
         cajaPApellido.setPreferredSize(new java.awt.Dimension(0, 23));
         cajaPApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -75,6 +70,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         });
 
         cajaSApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaSApellido.setToolTipText("Segundo apellido del cliente");
+        cajaSApellido.setNextFocusableComponent(cajaTelefono);
         cajaSApellido.setPreferredSize(new java.awt.Dimension(0, 23));
         cajaSApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -86,6 +83,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         });
 
         cajaTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTelefono.setToolTipText("Telefono del cliente");
+        cajaTelefono.setNextFocusableComponent(cajaCalle);
         cajaTelefono.setPreferredSize(new java.awt.Dimension(0, 23));
         cajaTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -109,6 +108,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         jLabel5.setText("Telefono:");
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre del cliente");
+        cajaNombre.setNextFocusableComponent(cajaPApellido);
         cajaNombre.setPreferredSize(new java.awt.Dimension(0, 23));
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -121,6 +122,7 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
 
         cajaIdCliente.setEditable(false);
         cajaIdCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaIdCliente.setToolTipText("Id del cliente");
         cajaIdCliente.setEnabled(false);
         cajaIdCliente.setPreferredSize(new java.awt.Dimension(0, 23));
 
@@ -139,6 +141,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         comboMunicipio.setEditable(true);
         comboMunicipio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboMunicipio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Municipio...", "Apozol", "Apulco", "Atolinga", "Benito Juárez", "Calera", "Cañitas de Felipe Pescador", "Chalchihuites", "Concepción del Oro", "Cuauhtémoc", "El Plateado de Joaquín Amaro", "El Salvador", "Fresnillo", "Genaro Codina", "General Enrique Estrada", "General Francisco R. Murguía", "General Pánfilo Natera", "Guadalupe", "Huanusco", "Jalpa", "Jerez", "Jiménez del Teul", "Juan Aldama", "Juchipila", "Loreto", "Luis Moya", "Mazapil", "Melchor Ocampo", "Mezquital del Oro", "Miguel Auza", "Momax", "Monte Escobedo", "Morelos", "Moyahua de Estrada", "Nochistlán de Mejía", "Noria de Ángeles", "Ojocaliente", "Pánuco", "Pinos", "Río Grande", "Saín Alto", "Santa María de la Paz", "Sombrerete", "Susticacán", "Tabasco", "Tepechitlán", "Tepetongo", "Teúl de González Ortega", "Tlaltenango de Sánchez Román", "Trancoso", "Trinidad García de la Cadena", "Valparaíso", "Vetagrande", "Villa de Cos", "Villa García", "Villa González Ortega", "Villa Hidalgo ", "Villanueva", "Zacatecas" }));
+        comboMunicipio.setToolTipText("Municipio del cliente");
+        comboMunicipio.setNextFocusableComponent(btnEditar);
         comboMunicipio.setPreferredSize(new java.awt.Dimension(0, 23));
         comboMunicipio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -147,6 +151,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         });
 
         cajaColonia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaColonia.setToolTipText("Colonia del cliente");
+        cajaColonia.setNextFocusableComponent(comboMunicipio);
         cajaColonia.setPreferredSize(new java.awt.Dimension(0, 23));
         cajaColonia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -158,6 +164,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         });
 
         cajaCalle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaCalle.setToolTipText("Calle del cliente");
+        cajaCalle.setNextFocusableComponent(cajaColonia);
         cajaCalle.setPreferredSize(new java.awt.Dimension(0, 23));
         cajaCalle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -170,7 +178,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setNextFocusableComponent(btnEliminar);
+        btnCancelar.setToolTipText("Descartar accion");
+        btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -179,6 +188,7 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("Eliminar cliente");
         btnEliminar.setNextFocusableComponent(btnCancelar);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,8 +197,9 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         });
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.setNextFocusableComponent(btnCancelar);
+        btnEditar.setText("Actualizar");
+        btnEditar.setToolTipText("actualiza el registro con los nuevos datos");
+        btnEditar.setNextFocusableComponent(btnEliminar);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -289,10 +300,8 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(CLIENTE_DAO.eliminarCliente(Integer.parseInt(cajaIdCliente.getText()))){
-            JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        if(CLIENTE_DAO.eliminarCliente(Integer.parseInt(cajaIdCliente.getText())))
             this.dispose();
-        }
         else
             JOptionPane.showMessageDialog(null, "Error al eliminar el Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -306,14 +315,11 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             cliente = new Cliente(Integer.parseInt(cajaIdCliente.getText()), cajaNombre.getText(), cajaPApellido.getText(), cajaSApellido.getText(), cajaTelefono.getText(), cajaCalle.getText(), cajaColonia.getText(), comboMunicipio.getSelectedItem().toString());
 
-            if(CLIENTE_DAO.modificarCliente(cliente)){
-                JOptionPane.showMessageDialog(null, "Cambios guardados correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(CLIENTE_DAO.modificarCliente(cliente))
                 this.dispose();
-            }
             else
-            JOptionPane.showMessageDialog(null, "Error al actualizar los datos del Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+                JOptionPane.showMessageDialog(null, "Error al actualizar los datos del Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else
             JOptionPane.showMessageDialog(null, "Aun existen campos vacios.", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -394,25 +400,25 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
             soloNumeros(evt);
     }//GEN-LAST:event_cajaTelefonoKeyTyped
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void soloNumeros(KeyEvent evt) {
+    private void soloNumeros(KeyEvent evt) {
         char c = evt.getKeyChar();
         if((c < '0' || c > '9'))
             evt.consume();
     }
     
-    public void sinCaracteresEspeciales(KeyEvent evt) {
+    private void sinCaracteresEspeciales(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))
@@ -430,7 +436,6 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
         if(cajaTelefono.getText().length() != 10)
             bandera = false;
         
-
         return bandera;
     }
     
