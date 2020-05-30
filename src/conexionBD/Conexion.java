@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Cliente;
@@ -14,6 +16,7 @@ import modelo.Prod;
 import modelo.Producto;
 import modelo.Proveedor;
 import modelo.Usuario;
+import modelo.Venta;
 
 public class Conexion {
     public static Connection conexion;
@@ -321,6 +324,48 @@ public class Conexion {
         catch(SQLException e){return false;}
     }
     
+    public boolean ejecutarAlta(String sql, Venta venta) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            conexion.setAutoCommit(false);
+            pstm.setInt(1, venta.getIdEmpleado());
+            pstm.setInt(2, venta.getIdCliente());
+            pstm.setString(3, venta.getNombreCliente());
+            pstm.setInt(4, venta.getIdProducto());
+            pstm.setString(5, venta.getNombreProducto());
+            pstm.setInt(6, venta.getCantidad());
+            pstm.setString(7, venta.getFecha());
+            
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            conexion.commit();
+            return ejecucion==1;
+        }
+        catch(SQLException e){
+            try {
+                conexion.rollback();
+                conexion.setAutoCommit(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
+        }
+    }
+    
+    public boolean ejecutarAlta(String sql, int campo1) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setInt(1, campo1);
+                        
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){
+            System.out.println(e);
+            return false;}
+    }
     
     
     
