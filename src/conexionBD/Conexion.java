@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Cliente;
 import modelo.Empleado;
-import modelo.Prod;
 import modelo.Producto;
 import modelo.Proveedor;
 import modelo.Usuario;
@@ -53,8 +52,7 @@ public class Conexion {
         try {
             pstm.close();
             conexion.close();
-        }
-        catch(SQLException e){}
+        } catch(SQLException e){}
     } 
     
     public boolean ejecutarAlta(String sql, Usuario usuario) {
@@ -67,8 +65,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public boolean ejecutarBaja(String sql, int id) {
@@ -79,8 +76,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
 	
     public boolean ejecutarModificacion(String sql, Usuario usuario) {
@@ -93,8 +89,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public ResultSet ejecutarConsultaUsuarios(String sql, String usuario, String contraseña) {
@@ -114,8 +109,7 @@ public class Conexion {
             pstm=conexion.prepareStatement(sql);
             pstm.setInt(1, idEmpleado);
             rs=pstm.executeQuery();
-        }
-        catch(SQLException e) {}
+        } catch(SQLException e) {}
        
         return rs;
     }
@@ -129,8 +123,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
 	
     public boolean ejecutarModificacion(String sql, Categoria categoria) {
@@ -143,8 +136,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public ResultSet ejecutarConsultaID(String sql, String id) {
@@ -152,10 +144,7 @@ public class Conexion {
             pstm=conexion.prepareStatement(sql);
             pstm.setString(1, id);
             rs=pstm.executeQuery();
-        }
-        catch(SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo ejecutar la consulta SQL" + e.getMessage(), "Error de conexion", JOptionPane.ERROR_MESSAGE);
-        }
+        } catch(SQLException e) {}
         
         return rs;
     }
@@ -174,8 +163,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public boolean ejecutarModificacion(String sql, Cliente cliente) {
@@ -193,8 +181,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public boolean ejecutarAlta(String sql, Empleado empleado) {
@@ -212,8 +199,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public boolean ejecutarModificacion(String sql, Empleado empleado) {
@@ -232,10 +218,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-            return false;}
+        } catch(SQLException e){return false;}
     }
     
     public ResultSet ejecutarConsultaID(String sql, String nombre, String primerAp, String segundoAp, String cargo, String calle, String colonia, String municipio, String telefono) {
@@ -250,8 +233,7 @@ public class Conexion {
             pstm.setString(7, municipio);
             pstm.setString(8, telefono);
             rs=pstm.executeQuery();
-        }
-        catch(SQLException e) {
+        } catch(SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo ejecutar la consulta SQL" + e.getMessage(), "Error de conexion", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -269,8 +251,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
 	
     public boolean ejecutarModificacion(String sql, Proveedor proveedor) {
@@ -285,8 +266,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public boolean ejecutarAlta(String sql, Producto producto) {
@@ -302,8 +282,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
 	
     public boolean ejecutarModificacion(String sql, Producto producto) {
@@ -320,8 +299,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){return false;}
+        } catch(SQLException e){return false;}
     }
     
     public boolean ejecutarAlta(String sql, Venta venta) {
@@ -366,8 +344,4 @@ public class Conexion {
             System.out.println(e);
             return false;}
     }
-    
-    
-    
-    
 }
