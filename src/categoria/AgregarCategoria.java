@@ -159,8 +159,7 @@ public class AgregarCategoria extends javax.swing.JDialog {
                 this.dispose();
             else
                 JOptionPane.showMessageDialog(null, "Error al agregar la Categoria.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Campo(s) vacio(s).", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -186,13 +185,13 @@ public class AgregarCategoria extends javax.swing.JDialog {
             btnAgregar.doClick();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
 
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))

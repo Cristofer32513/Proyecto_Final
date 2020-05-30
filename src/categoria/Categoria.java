@@ -1,6 +1,5 @@
 package categoria;
 
-import controlador.CategoriaDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import modelo.ResultSetTableModel;
@@ -216,20 +215,20 @@ public class Categoria extends javax.swing.JPanel {
         buscar();
     }//GEN-LAST:event_cajaTextoKeyReleased
  
-    public void buscar(){
+    private void buscar(){
         if(!cajaTexto.getText().equals(""))
             actualizarTabla("SELECT * FROM Categorias WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
         else
             actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
     
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
         
-    public final void actualizarTabla(String consulta){
+    private void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
         ResultSetTableModel modeloDatos = null;
