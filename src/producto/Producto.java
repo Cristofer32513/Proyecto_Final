@@ -1,6 +1,5 @@
 package producto;
 
-import controlador.ProductoDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import modelo.ResultSetTableModel;
@@ -9,7 +8,7 @@ public class Producto extends javax.swing.JPanel {
 
     public Producto() {
         initComponents();
-        iniciar();
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
     
     @SuppressWarnings("unchecked")
@@ -41,7 +40,9 @@ public class Producto extends javax.swing.JPanel {
         etiqueta.setText("Buscar:");
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTexto.setToolTipText("Buscar");
         cajaTexto.setEnabled(false);
+        cajaTexto.setNextFocusableComponent(btnLimpiar);
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cajaTextoKeyReleased(evt);
@@ -54,6 +55,7 @@ public class Producto extends javax.swing.JPanel {
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setToolTipText("Limpiar area de busqueda");
         btnLimpiar.setEnabled(false);
         btnLimpiar.setNextFocusableComponent(btnAgregar);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +149,8 @@ public class Producto extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar producto");
+        btnAgregar.setNextFocusableComponent(radioNombre);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -233,11 +237,12 @@ public class Producto extends javax.swing.JPanel {
                     .addComponent(radioProveedor)
                     .addComponent(radioCategoria))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaTexto)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(etiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cajaTexto)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -247,20 +252,19 @@ public class Producto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNombreActionPerformed
-        etiqueta.setText("Nombre:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("Nombre del producto");
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioNombreActionPerformed
 
     private void radioMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMarcaActionPerformed
-        etiqueta.setText("Marca:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("Marca del producto");
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioMarcaActionPerformed
 
     private void radioProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioProveedorActionPerformed
-        etiqueta.setText("id Proveedor:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("Id del proveedor");
         ConsultarProveedor consultar = new ConsultarProveedor(null, true);
         consultar.setVisible(true);
         habilitarCampos(false, true, true);
@@ -277,23 +281,22 @@ public class Producto extends javax.swing.JPanel {
     }//GEN-LAST:event_cajaTextoKeyTyped
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = idProv = idCat = 0;
-        nom = mar = pre = sto = "";
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false, true);
+        limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void limpiar(){
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        grupo.clearSelection();
+        cajaTexto.setText("");
+        cajaTexto.setToolTipText("Buscar");
+        habilitarCampos(false, false, true);
+    }
+    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         agregar = new AgregarProducto(null, true);
         agregar.setVisible(true);
         agregar.dispose();
-        btnLimpiar.setEnabled(true);
-        btnLimpiar.doClick();
-        btnLimpiar.setEnabled(false);
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     public void buscar(){
@@ -301,25 +304,25 @@ public class Producto extends javax.swing.JPanel {
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE Nombre LIKE '%"+cajaTexto.getText()+"%'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioMarca.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE Marca LIKE '%"+cajaTexto.getText()+"%'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioProveedor.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE id_Proveedor = '"+cajaTexto.getText()+"'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioCategoria.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE id_Categoria = '"+cajaTexto.getText()+"'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
     }
     
@@ -336,18 +339,14 @@ public class Producto extends javax.swing.JPanel {
             eliminar = new EliminarOEditarProducto(null, true, id, nom, mar, Double.parseDouble(pre), Integer.parseInt(sto), idProv, idCat);
             eliminar.setVisible(true);
             eliminar.dispose();
-            btnLimpiar.setEnabled(true);
-            btnLimpiar.doClick();
-            btnLimpiar.setEnabled(false);
-            actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+            limpiar();
             
             habilitarCampos(cajaTexto.isEnabled(), btnLimpiar.isEnabled(), true);
         } catch (NumberFormatException e) {}
     }//GEN-LAST:event_tablaMouseReleased
 
     private void radioCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCategoriaActionPerformed
-        etiqueta.setText("id Categoria:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("Id de la categoria");
         ConsultarCategoria consultar = new ConsultarCategoria(null, true);
         consultar.setVisible(true);
         habilitarCampos(false, true, true);
@@ -380,72 +379,20 @@ public class Producto extends javax.swing.JPanel {
         buscar();
     }//GEN-LAST:event_cajaTextoKeyReleased
 
-    public void habilitarCampos(boolean caja, boolean btnLim, boolean btnAgr){
+    private void habilitarCampos(boolean caja, boolean btnLim, boolean btnAgr){
         cajaTexto.setEnabled(caja);
         cajaTexto.setText("");
         btnLimpiar.setEnabled(btnLim); 
         btnAgregar.setEnabled(btnAgr);          
     }
     
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void nuevo(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = idProv = idCat = 0;
-        nom = mar = pre = sto = "";
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false, true);
-    }
-    
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id Producto", "Nombre", "Marca", "Precio", "Stock", "id_Proveedor", "id_Categoria"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-    }
-    
-    public final void actualizarTabla(String consulta){
+    private void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
         ResultSetTableModel modeloDatos = null;
@@ -455,10 +402,6 @@ public class Producto extends javax.swing.JPanel {
         } catch (ClassNotFoundException | SQLException e) {}
 
         tabla.setModel(modeloDatos);
-    }
-    
-    public final void iniciar(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -480,7 +423,6 @@ public class Producto extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, mar, pre, sto;
     private int id, idProv, idCat;
-    final static ProductoDAO PRODUCTO_DAO = new ProductoDAO();
     final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Productos";
     private AgregarProducto agregar;
     private EliminarOEditarProducto eliminar;

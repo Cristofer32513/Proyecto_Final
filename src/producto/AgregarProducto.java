@@ -10,6 +10,7 @@ public class AgregarProducto extends javax.swing.JDialog {
     public AgregarProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     @SuppressWarnings("unchecked")
@@ -44,6 +45,7 @@ public class AgregarProducto extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 264));
 
         cajaMarca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaMarca.setToolTipText("Marca del producto");
         cajaMarca.setNextFocusableComponent(spinnerPrecio);
         cajaMarca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -67,6 +69,7 @@ public class AgregarProducto extends javax.swing.JDialog {
         jLabel5.setText("Stock:");
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre del producto");
         cajaNombre.setNextFocusableComponent(cajaMarca);
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -84,13 +87,16 @@ public class AgregarProducto extends javax.swing.JDialog {
         jLabel9.setText("id Provedor:");
 
         cajaIdProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaIdProveedor.setToolTipText("Id del proveedor");
         cajaIdProveedor.setEnabled(false);
 
         cajaIdCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaIdCategoria.setToolTipText("Id de la categoria");
         cajaIdCategoria.setEnabled(false);
 
         btnBuscarCategoria.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnBuscarCategoria.setText(". . .");
+        btnBuscarCategoria.setToolTipText("Buscar categoria");
         btnBuscarCategoria.setNextFocusableComponent(btnAgregar);
         btnBuscarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,14 +106,17 @@ public class AgregarProducto extends javax.swing.JDialog {
 
         spinnerPrecio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         spinnerPrecio.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.01d));
+        spinnerPrecio.setToolTipText("Precio del producto");
         spinnerPrecio.setNextFocusableComponent(spinnerStock);
 
         spinnerStock.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         spinnerStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10000, 1));
+        spinnerStock.setToolTipText("Stock disponible");
         spinnerStock.setNextFocusableComponent(btnBuscarProveedor);
 
         btnBuscarProveedor.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnBuscarProveedor.setText(". . .");
+        btnBuscarProveedor.setToolTipText("Buscar proveedor");
         btnBuscarProveedor.setNextFocusableComponent(btnBuscarCategoria);
         btnBuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +126,7 @@ public class AgregarProducto extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Descartar el ingreso del producto");
         btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +136,7 @@ public class AgregarProducto extends javax.swing.JDialog {
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar producto");
         btnAgregar.setNextFocusableComponent(btnCancelar);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,14 +245,11 @@ public class AgregarProducto extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             producto = new Producto(id, cajaNombre.getText(), cajaMarca.getText(), (double)spinnerPrecio.getValue(), (int)spinnerStock.getValue(), Integer.parseInt(cajaIdProveedor.getText()), Integer.parseInt(cajaIdCategoria.getText()));
             
-            if(PRODUCTO_DAO.agregarProducto(producto)){
-                JOptionPane.showMessageDialog(null, "Producto agregado correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(PRODUCTO_DAO.agregarProducto(producto))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al agregar el Producto.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Aun existen campos vacios.", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -276,13 +284,13 @@ public class AgregarProducto extends javax.swing.JDialog {
         consultar.dispose();
     }//GEN-LAST:event_btnBuscarProveedorActionPerformed
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))

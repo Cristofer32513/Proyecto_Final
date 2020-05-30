@@ -1,7 +1,5 @@
 package producto;
 
-import proveedor.*;
-import controlador.ProveedorDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import modelo.ResultSetTableModel;
@@ -41,6 +39,7 @@ public class ConsultarProveedor extends javax.swing.JDialog {
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cajaTexto.setEnabled(false);
+        cajaTexto.setNextFocusableComponent(btnLimpiar);
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cajaTextoKeyReleased(evt);
@@ -54,6 +53,7 @@ public class ConsultarProveedor extends javax.swing.JDialog {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setEnabled(false);
+        btnLimpiar.setNextFocusableComponent(radioNombre);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
@@ -213,19 +213,19 @@ public class ConsultarProveedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNombreActionPerformed
-        etiqueta.setText("Nombre:");
+        cajaTexto.setToolTipText("Nombre del proveedor");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true);
     }//GEN-LAST:event_radioNombreActionPerformed
 
     private void radioPApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPApellidoActionPerformed
-        etiqueta.setText("Primer Apellido:");
+        cajaTexto.setToolTipText("Primer apellido del proveedor");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true);
     }//GEN-LAST:event_radioPApellidoActionPerformed
 
     private void radioSApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSApellidoActionPerformed
-        etiqueta.setText("Segundo Apellido:");
+        cajaTexto.setToolTipText("Segundo apellido del proveedor");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true);
     }//GEN-LAST:event_radioSApellidoActionPerformed
@@ -242,11 +242,11 @@ public class ConsultarProveedor extends javax.swing.JDialog {
         grupo.clearSelection();
         id = 0;
         cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
+        cajaTexto.setToolTipText("Buscar");
         habilitarCampos(false, false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    public void buscar(){
+    private void buscar(){
         if(radioNombre.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Proveedores WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
@@ -293,70 +293,19 @@ public class ConsultarProveedor extends javax.swing.JDialog {
         buscar();
     }//GEN-LAST:event_cajaTextoKeyReleased
 
-    public void habilitarCampos(boolean caja, boolean btnLim){
+    private void habilitarCampos(boolean caja, boolean btnLim){
         cajaTexto.setEnabled(caja);
         cajaTexto.setText("");
         btnLimpiar.setEnabled(btnLim);      
     }
     
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "id Proveedor", "Nombre", "Primer Apellido", "Segundo Apellido", "Telefono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-    }
-    
-    public void nuevo(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = 0;
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar:");
-        habilitarCampos(false, false);
-    }
-    
-    public final void actualizarTabla(String consulta){
+    private void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
         ResultSetTableModel modeloDatos = null;
@@ -367,11 +316,7 @@ public class ConsultarProveedor extends javax.swing.JDialog {
 
         tabla.setModel(modeloDatos);
     }
-    
-    public final void iniciar(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-    }
-    
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JTextField cajaTexto;
@@ -388,6 +333,5 @@ public class ConsultarProveedor extends javax.swing.JDialog {
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
     public int id;
-    final static ProveedorDAO PROVEEDOR_DAO = new ProveedorDAO();
     final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Proveedores";
 }
