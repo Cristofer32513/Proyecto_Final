@@ -7,12 +7,6 @@ import javax.swing.JOptionPane;
 
 public class EliminarOEditarEmpleado extends javax.swing.JDialog {
 
-    public EliminarOEditarEmpleado(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        setLocationRelativeTo(null);
-    }
-    
     public EliminarOEditarEmpleado(java.awt.Frame proveedor, boolean modal, int id, String nombre, String primApe, String segApe, String cargo, String calle, String colo, String mun, String tel) {
         super(proveedor, modal);
         initComponents();
@@ -57,7 +51,10 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar Empleado");
-        setMinimumSize(new java.awt.Dimension(490, 247));
+        setMaximumSize(new java.awt.Dimension(460, 350));
+        setMinimumSize(new java.awt.Dimension(460, 350));
+        setPreferredSize(new java.awt.Dimension(460, 350));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 264));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 264));
@@ -65,6 +62,7 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("Eliminar empleado");
         btnEliminar.setNextFocusableComponent(btnCancelar);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +72,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setNextFocusableComponent(btnEliminar);
+        btnCancelar.setToolTipText("Descartar accion");
+        btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -82,6 +81,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         });
 
         cajaTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTelefono.setToolTipText("Telefono del empleado");
+        cajaTelefono.setNextFocusableComponent(btnEditar);
         cajaTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaTelefonoKeyPressed(evt);
@@ -100,6 +101,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         comboMunicipio.setEditable(true);
         comboMunicipio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboMunicipio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Municipio...", "Apozol", "Apulco", "Atolinga", "Benito Juárez", "Calera", "Cañitas de Felipe Pescador", "Chalchihuites", "Concepción del Oro", "Cuauhtémoc", "El Plateado de Joaquín Amaro", "El Salvador", "Fresnillo", "Genaro Codina", "General Enrique Estrada", "General Francisco R. Murguía", "General Pánfilo Natera", "Guadalupe", "Huanusco", "Jalpa", "Jerez", "Jiménez del Teul", "Juan Aldama", "Juchipila", "Loreto", "Luis Moya", "Mazapil", "Melchor Ocampo", "Mezquital del Oro", "Miguel Auza", "Momax", "Monte Escobedo", "Morelos", "Moyahua de Estrada", "Nochistlán de Mejía", "Noria de Ángeles", "Ojocaliente", "Pánuco", "Pinos", "Río Grande", "Saín Alto", "Santa María de la Paz", "Sombrerete", "Susticacán", "Tabasco", "Tepechitlán", "Tepetongo", "Teúl de González Ortega", "Tlaltenango de Sánchez Román", "Trancoso", "Trinidad García de la Cadena", "Valparaíso", "Vetagrande", "Villa de Cos", "Villa García", "Villa González Ortega", "Villa Hidalgo ", "Villanueva", "Zacatecas" }));
+        comboMunicipio.setToolTipText("Municipio del empleado");
+        comboMunicipio.setNextFocusableComponent(cajaTelefono);
         comboMunicipio.setPreferredSize(new java.awt.Dimension(6, 23));
         comboMunicipio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -108,6 +111,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         });
 
         cajaColonia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaColonia.setToolTipText("Colonia del empleado");
+        cajaColonia.setNextFocusableComponent(comboMunicipio);
         cajaColonia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaColoniaKeyPressed(evt);
@@ -124,6 +129,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         jLabel8.setText("Calle:");
 
         cajaCalle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaCalle.setToolTipText("Calle del empleado");
+        cajaCalle.setNextFocusableComponent(cajaColonia);
         cajaCalle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaCalleKeyPressed(evt);
@@ -136,6 +143,9 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         comboCargo.setEditable(true);
         comboCargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cargo ...", "Gerente", "Administrador", "Cajero", "Repartidor" }));
+        comboCargo.setToolTipText("Cargo a desempeñar");
+        comboCargo.setName(""); // NOI18N
+        comboCargo.setNextFocusableComponent(cajaCalle);
         comboCargo.setPreferredSize(new java.awt.Dimension(6, 23));
         comboCargo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -156,6 +166,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         jLabel2.setText("Nombre:");
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre del empleado");
+        cajaNombre.setNextFocusableComponent(cajaPApellido);
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaNombreKeyPressed(evt);
@@ -166,6 +178,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         });
 
         cajaPApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaPApellido.setToolTipText("Primer apellido del empleado");
+        cajaPApellido.setNextFocusableComponent(cajaSApellido);
         cajaPApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaPApellidoKeyPressed(evt);
@@ -176,6 +190,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         });
 
         cajaSApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaSApellido.setToolTipText("Segundo apellido del empleado");
+        cajaSApellido.setNextFocusableComponent(comboCargo);
         cajaSApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaSApellidoKeyPressed(evt);
@@ -189,11 +205,13 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         jLabel11.setText("id_Empleado:");
 
         cajaidEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaidEmpleado.setToolTipText("Id Empleado");
         cajaidEmpleado.setEnabled(false);
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.setNextFocusableComponent(btnCancelar);
+        btnEditar.setText("Actualizar");
+        btnEditar.setToolTipText("Actualizar registro con los nuevos datos");
+        btnEditar.setNextFocusableComponent(btnEliminar);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -205,42 +223,38 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel5)
-                    .addComponent(btnEditar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
-                    .addComponent(cajaPApellido)
-                    .addComponent(cajaNombre)
-                    .addComponent(cajaidEmpleado)
-                    .addComponent(cajaSApellido, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cajaCalle)
-                    .addComponent(cajaColonia)
-                    .addComponent(comboMunicipio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cajaTelefono))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel5)
+                            .addComponent(btnEditar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancelar))
+                            .addComponent(cajaPApellido)
+                            .addComponent(cajaNombre)
+                            .addComponent(cajaidEmpleado)
+                            .addComponent(cajaSApellido, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cajaCalle)
+                            .addComponent(cajaColonia)
+                            .addComponent(comboMunicipio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cajaTelefono))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -305,10 +319,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(EMPLEADO_DAO.eliminarEmpleado(Integer.parseInt(cajaidEmpleado.getText()))){
-            JOptionPane.showMessageDialog(null, "Empleado eliminado correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        if(EMPLEADO_DAO.eliminarEmpleado(Integer.parseInt(cajaidEmpleado.getText())))
             this.dispose();
-        }
         else
             JOptionPane.showMessageDialog(null, "Error al eliminar el Empleado.", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -322,14 +334,11 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             empleado = new Empleado(Integer.parseInt(cajaidEmpleado.getText()), cajaNombre.getText(), cajaPApellido.getText(), cajaSApellido.getText(), comboCargo.getSelectedItem().toString(), cajaCalle.getText(), cajaColonia.getText(), comboMunicipio.getSelectedItem().toString(), cajaTelefono.getText());
 
-            if(EMPLEADO_DAO.modificarEmpleado(empleado)){
-                JOptionPane.showMessageDialog(null, "Cambios guardados correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(EMPLEADO_DAO.modificarEmpleado(empleado))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al Actualizar los datos del Empleado.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Campo(s) vacio(s).", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -415,25 +424,25 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
             soloNumeros(evt);
     }//GEN-LAST:event_cajaTelefonoKeyTyped
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void soloNumeros(KeyEvent evt) {
+    private void soloNumeros(KeyEvent evt) {
         char c = evt.getKeyChar();
         if((c < '0' || c > '9'))
             evt.consume();
     }
     
-    public void sinCaracteresEspeciales(KeyEvent evt) {
+    private void sinCaracteresEspeciales(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))
@@ -453,7 +462,6 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         if(cajaTelefono.getText().length() != 10)
             bandera = false;
         
-
         return bandera;
     }
     

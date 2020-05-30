@@ -1,6 +1,5 @@
 package empleado;
 
-import controlador.EmpleadoDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.JTextField;
@@ -10,7 +9,7 @@ public class Empleado extends javax.swing.JPanel {
 
     public Empleado() {
         initComponents();
-        iniciar();
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
     
     @SuppressWarnings("unchecked")
@@ -46,6 +45,7 @@ public class Empleado extends javax.swing.JPanel {
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cajaTexto.setEnabled(false);
+        cajaTexto.setNextFocusableComponent(btnLimpiar);
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cajaTextoKeyReleased(evt);
@@ -58,6 +58,7 @@ public class Empleado extends javax.swing.JPanel {
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setToolTipText("Limpiar area de busqueda");
         btnLimpiar.setEnabled(false);
         btnLimpiar.setNextFocusableComponent(btnAgregar);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +159,8 @@ public class Empleado extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar nuevo empleado");
+        btnAgregar.setNextFocusableComponent(radioNombre);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -167,7 +170,7 @@ public class Empleado extends javax.swing.JPanel {
         grupo.add(radioCargo);
         radioCargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioCargo.setText("Cargo");
-        radioCargo.setNextFocusableComponent(cajaTexto);
+        radioCargo.setNextFocusableComponent(radioCalle);
         radioCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioCargoActionPerformed(evt);
@@ -182,7 +185,7 @@ public class Empleado extends javax.swing.JPanel {
         grupo.add(radioCalle);
         radioCalle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioCalle.setText("Calle");
-        radioCalle.setNextFocusableComponent(cajaTexto);
+        radioCalle.setNextFocusableComponent(radioColonia);
         radioCalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioCalleActionPerformed(evt);
@@ -197,7 +200,7 @@ public class Empleado extends javax.swing.JPanel {
         grupo.add(radioColonia);
         radioColonia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioColonia.setText("Colonia");
-        radioColonia.setNextFocusableComponent(cajaTexto);
+        radioColonia.setNextFocusableComponent(radioMunicipio);
         radioColonia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioColoniaActionPerformed(evt);
@@ -315,19 +318,19 @@ public class Empleado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNombreActionPerformed
-        etiqueta.setText("Nombre:");
+        cajaTexto.setToolTipText("Nombre del empleado");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioNombreActionPerformed
 
     private void radioPApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPApellidoActionPerformed
-        etiqueta.setText("Primer Apellido:");
+        cajaTexto.setToolTipText("Primer apellido del empleado");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioPApellidoActionPerformed
 
     private void radioSApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSApellidoActionPerformed
-        etiqueta.setText("Segundo Apellido:");
+        cajaTexto.setToolTipText("Segundo apellido del empleado");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioSApellidoActionPerformed
@@ -337,26 +340,25 @@ public class Empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_cajaTextoKeyTyped
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = 0;
-        nom = pA = sA = car = call = col = mun = tel = ""; 
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false, true);
+        limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void limpiar(){
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        grupo.clearSelection();
+        cajaTexto.setText("");
+        cajaTexto.setToolTipText("Buscar");
+        habilitarCampos(false, false, true);
+    }
+    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         agregar = new AgregarEmpleado(null, true);
         agregar.setVisible(true);
         agregar.dispose();
-        btnLimpiar.setEnabled(true);
-        btnLimpiar.doClick();
-        btnLimpiar.setEnabled(false);
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    public void buscar(){
+    private void buscar(){
         if(radioNombre.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Empleados WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
@@ -416,18 +418,14 @@ public class Empleado extends javax.swing.JPanel {
             eliminar = new EliminarOEditarEmpleado(null, true, id, nom, pA, sA, car, call, col, mun, tel);
             eliminar.setVisible(true);
             eliminar.dispose();
-            btnLimpiar.setEnabled(true);
-            btnLimpiar.doClick();
-            btnLimpiar.setEnabled(false);
-            actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+            limpiar();
             
             habilitarCampos(cajaTexto.isEnabled(), btnLimpiar.isEnabled(), true);
-        } catch (NumberFormatException e) {
-        }
+        } catch (NumberFormatException e) {}
     }//GEN-LAST:event_tablaMouseReleased
 
     private void radioCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCargoActionPerformed
-        etiqueta.setText("Cargo:");
+        cajaTexto.setToolTipText("Cargo a desempeñar");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioCargoActionPerformed
@@ -457,7 +455,7 @@ public class Empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_cajaTextoKeyReleased
 
     private void radioCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCalleActionPerformed
-        etiqueta.setText("Calle:");
+        cajaTexto.setToolTipText("Calle del empleado");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioCalleActionPerformed
@@ -468,7 +466,7 @@ public class Empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_radioCalleKeyPressed
 
     private void radioColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioColoniaActionPerformed
-        etiqueta.setText("Colonia:");
+        cajaTexto.setToolTipText("Colonia del empleado");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioColoniaActionPerformed
@@ -479,7 +477,7 @@ public class Empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_radioColoniaKeyPressed
 
     private void radioMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMunicipioActionPerformed
-        etiqueta.setText("Municipio:");
+        cajaTexto.setToolTipText("Municipio del empleado");
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true, true);
     }//GEN-LAST:event_radioMunicipioActionPerformed
@@ -489,14 +487,14 @@ public class Empleado extends javax.swing.JPanel {
             radioMunicipio.doClick();
     }//GEN-LAST:event_radioMunicipioKeyPressed
 
-    public void habilitarCampos(boolean caja, boolean btnLim, boolean btnAgr){
+    private void habilitarCampos(boolean caja, boolean btnLim, boolean btnAgr){
         cajaTexto.setEnabled(caja);
         cajaTexto.setText("");
         btnLimpiar.setEnabled(btnLim); 
         btnAgregar.setEnabled(btnAgr);           
     }
     
-    public void verificarEntradaTexto(JTextField txtF, KeyEvent e){
+    private void verificarEntradaTexto(JTextField txtF, KeyEvent e){
         if (txtF.getText().length() == 45) 
             e.consume();			
         else
@@ -504,59 +502,7 @@ public class Empleado extends javax.swing.JPanel {
                 e.consume();
     }
     
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id Empleado", "Nombre", "Primer Apellido", "Segundo Apellido", "Cargo", "Calle", "Colonia", "Municipio", "Telefono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-    }
-    
-    public void nuevo(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = 0;
-        nom = pA = sA = car = call = col = mun = tel = ""; 
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false, true);
-    }
-    
-    public final void actualizarTabla(String consulta){
+    private void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
         ResultSetTableModel modeloDatos = null;
@@ -566,10 +512,6 @@ public class Empleado extends javax.swing.JPanel {
         } catch (ClassNotFoundException | SQLException e) {}
 
         tabla.setModel(modeloDatos);
-    }
-    
-    public final void iniciar(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -594,7 +536,6 @@ public class Empleado extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, pA, sA, car, call, col, mun, tel;
     private int id;
-    final static EmpleadoDAO EMPLEADO_DAO = new EmpleadoDAO();
     final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Empleados";
     private AgregarEmpleado agregar;
     private EliminarOEditarEmpleado eliminar;

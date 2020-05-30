@@ -40,17 +40,21 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Empleado");
-        setMinimumSize(new java.awt.Dimension(490, 247));
+        setMaximumSize(new java.awt.Dimension(460, 320));
+        setMinimumSize(new java.awt.Dimension(460, 320));
+        setPreferredSize(new java.awt.Dimension(460, 320));
+        setResizable(false);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(490, 264));
-        jPanel1.setMinimumSize(new java.awt.Dimension(490, 264));
-        jPanel1.setPreferredSize(new java.awt.Dimension(490, 264));
+        jPanel1.setMaximumSize(new java.awt.Dimension(452, 264));
+        jPanel1.setMinimumSize(new java.awt.Dimension(452, 264));
+        jPanel1.setPreferredSize(new java.awt.Dimension(452, 264));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2.setText("Nombre:");
         jLabel2.setPreferredSize(new java.awt.Dimension(20, 23));
 
         cajaNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombre.setToolTipText("Nombre del empleado");
         cajaNombre.setNextFocusableComponent(cajaPApellido);
         cajaNombre.setPreferredSize(new java.awt.Dimension(20, 23));
         cajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -67,6 +71,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         jLabel3.setPreferredSize(new java.awt.Dimension(20, 23));
 
         cajaPApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaPApellido.setToolTipText("Primer apellido del empleado");
         cajaPApellido.setNextFocusableComponent(cajaSApellido);
         cajaPApellido.setPreferredSize(new java.awt.Dimension(20, 23));
         cajaPApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -83,6 +88,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(20, 23));
 
         cajaSApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaSApellido.setToolTipText("Segundo apellido del empleado");
         cajaSApellido.setNextFocusableComponent(comboCargo);
         cajaSApellido.setPreferredSize(new java.awt.Dimension(20, 23));
         cajaSApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -103,6 +109,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         jLabel8.setPreferredSize(new java.awt.Dimension(20, 23));
 
         cajaCalle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaCalle.setToolTipText("Calle del empleado");
         cajaCalle.setNextFocusableComponent(cajaColonia);
         cajaCalle.setPreferredSize(new java.awt.Dimension(20, 23));
         cajaCalle.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -115,6 +122,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         });
 
         cajaTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTelefono.setToolTipText("Telefono del empleado");
         cajaTelefono.setNextFocusableComponent(btnAgregar);
         cajaTelefono.setPreferredSize(new java.awt.Dimension(20, 23));
         cajaTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -132,11 +140,13 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         comboCargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cargo ...", "Gerente", "Administrador", "Cajero", "Repartidor" }));
+        comboCargo.setToolTipText("Cargo a desempeñar");
         comboCargo.setNextFocusableComponent(cajaCalle);
         comboCargo.setPreferredSize(new java.awt.Dimension(20, 23));
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("Agregar empleado");
         btnAgregar.setNextFocusableComponent(btnCancelar);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +156,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Cancelar ingreso empleado");
         btnCancelar.setNextFocusableComponent(cajaNombre);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +173,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         jLabel10.setPreferredSize(new java.awt.Dimension(20, 23));
 
         cajaColonia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaColonia.setToolTipText("Colonia del empleado");
         cajaColonia.setNextFocusableComponent(comboMunicipio);
         cajaColonia.setPreferredSize(new java.awt.Dimension(20, 23));
         cajaColonia.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -175,6 +187,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         comboMunicipio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboMunicipio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Municipio...", "Apozol", "Apulco", "Atolinga", "Benito Juárez", "Calera", "Cañitas de Felipe Pescador", "Chalchihuites", "Concepción del Oro", "Cuauhtémoc", "El Plateado de Joaquín Amaro", "El Salvador", "Fresnillo", "Genaro Codina", "General Enrique Estrada", "General Francisco R. Murguía", "General Pánfilo Natera", "Guadalupe", "Huanusco", "Jalpa", "Jerez", "Jiménez del Teul", "Juan Aldama", "Juchipila", "Loreto", "Luis Moya", "Mazapil", "Melchor Ocampo", "Mezquital del Oro", "Miguel Auza", "Momax", "Monte Escobedo", "Morelos", "Moyahua de Estrada", "Nochistlán de Mejía", "Noria de Ángeles", "Ojocaliente", "Pánuco", "Pinos", "Río Grande", "Saín Alto", "Santa María de la Paz", "Sombrerete", "Susticacán", "Tabasco", "Tepechitlán", "Tepetongo", "Teúl de González Ortega", "Tlaltenango de Sánchez Román", "Trancoso", "Trinidad García de la Cadena", "Valparaíso", "Vetagrande", "Villa de Cos", "Villa García", "Villa González Ortega", "Villa Hidalgo ", "Villanueva", "Zacatecas" }));
+        comboMunicipio.setToolTipText("Municipio del empleado");
         comboMunicipio.setNextFocusableComponent(cajaTelefono);
         comboMunicipio.setPreferredSize(new java.awt.Dimension(20, 23));
         comboMunicipio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -267,7 +280,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,14 +331,12 @@ public class AgregarEmpleado extends javax.swing.JDialog {
             empleado = new Empleado(0, cajaNombre.getText(), cajaPApellido.getText(), cajaSApellido.getText(), comboCargo.getSelectedItem().toString(), cajaCalle.getText(), cajaColonia.getText(), comboMunicipio.getSelectedItem().toString(), cajaTelefono.getText());
 
             if(EMPLEADO_DAO.agregarEmpleado(empleado)){
-                JOptionPane.showMessageDialog(null, "Empleado agregado correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 Empleado emp = EMPLEADO_DAO.buscarEmpleado(empleado.getNombre(), empleado.getPrimerApellido(), empleado.getSegundoApellido(), empleado.getCargo(), empleado.getCalle(), empleado.getColonia(), empleado.getMunicipio(), empleado.getTelefono());
                 AgregarLogin agregar = new AgregarLogin(null, true, emp.getIdEmpleado());
                 agregar.setVisible(true);
                 agregar.dispose();
                 this.dispose();
-            }
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Error al agregar el Empleado.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else
@@ -378,25 +389,25 @@ public class AgregarEmpleado extends javax.swing.JDialog {
             btnAgregar.doClick();
     }//GEN-LAST:event_comboMunicipioKeyPressed
 
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void soloNumeros(KeyEvent evt) {
+    private void soloNumeros(KeyEvent evt) {
         char c = evt.getKeyChar();
         if((c < '0' || c > '9'))
             evt.consume();
     }
     
-    public void sinCaracteresEspeciales(KeyEvent evt) {
+    private void sinCaracteresEspeciales(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaNombre.getText().trim().equals(""))

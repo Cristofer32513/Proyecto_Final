@@ -59,7 +59,7 @@ public class Prueba extends javax.swing.JFrame {
         venus.setLocation(0,0);
         venus.setSize(800, 400);
         
-        jPanel1.add(cliente, BorderLayout.CENTER);
+        jPanel1.add(empleado, BorderLayout.CENTER);
         jPanel1.revalidate();
         jPanel1.repaint();
         

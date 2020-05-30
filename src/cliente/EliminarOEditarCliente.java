@@ -198,7 +198,7 @@ public class EliminarOEditarCliente extends javax.swing.JDialog {
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnEditar.setText("Actualizar");
-        btnEditar.setToolTipText("actualiza el registro con los nuevos datos");
+        btnEditar.setToolTipText("Actualiza el registro con los nuevos datos");
         btnEditar.setNextFocusableComponent(btnEliminar);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

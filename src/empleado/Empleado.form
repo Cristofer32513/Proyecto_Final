@@ -127,7 +127,7 @@
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
+          <ComponentRef name="btnLimpiar"/>
         </Property>
       </Properties>
       <Events>
@@ -146,6 +146,7 @@
           <Image iconType="3" name="/imagenes/clean.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Limpiar area de busqueda"/>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="btnAgregar"/>
@@ -249,8 +250,9 @@
           <Image iconType="3" name="/imagenes/add.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Agregar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Agregar nuevo empleado"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
+          <ComponentRef name="radioNombre"/>
         </Property>
       </Properties>
       <Events>
@@ -267,7 +269,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cargo"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="cajaTexto"/>
+          <ComponentRef name="radioCalle"/>
         </Property>
       </Properties>
       <Events>
@@ -285,7 +287,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Calle"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="cajaTexto"/>
+          <ComponentRef name="radioColonia"/>
         </Property>
       </Properties>
       <Events>
@@ -303,7 +305,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Colonia"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="cajaTexto"/>
+          <ComponentRef name="radioMunicipio"/>
         </Property>
       </Properties>
       <Events>

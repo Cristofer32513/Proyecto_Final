@@ -42,7 +42,7 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(490, 200));
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnEditar.setText("Editar");
+        btnEditar.setText("Actualizar");
         btnEditar.setToolTipText("Editar categoria");
         btnEditar.setNextFocusableComponent(btnEliminar);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
