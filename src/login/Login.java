@@ -37,6 +37,7 @@ public class Login extends javax.swing.JPanel {
         etiqueta.setText("Buscar:");
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTexto.setToolTipText("Buscar usuario");
         cajaTexto.setPreferredSize(new java.awt.Dimension(6, 25));
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -167,7 +168,6 @@ public class Login extends javax.swing.JPanel {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        id = 0;
         cajaTexto.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
@@ -176,12 +176,9 @@ public class Login extends javax.swing.JPanel {
             id = Integer.parseInt(String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 0)));
             user = USUARIO_DAO.buscarUsuario(id);
             
-            if(id != 0){
-                editar = new EditarLogin(null, true, user.getIdEmpleado(), user.getUsuario(), user.getContraseña());
-                editar.setVisible(true);
-                btnLimpiar.doClick();
-            } else
-                JOptionPane.showMessageDialog(null, "Seleccione un registro.", "Cuidado!!!", JOptionPane.WARNING_MESSAGE);
+            editar = new EditarLogin(null, true, user.getIdEmpleado(), user.getUsuario(), user.getContraseña());
+            editar.setVisible(true);
+            btnLimpiar.doClick();
         } catch (NumberFormatException e) {}        
     }//GEN-LAST:event_tablaMouseReleased
 
@@ -189,62 +186,20 @@ public class Login extends javax.swing.JPanel {
         buscar();
     }//GEN-LAST:event_cajaTextoKeyReleased
 
-    public void buscar() {
+    private void buscar() {
         if(!cajaTexto.getText().equals(""))
             actualizarTabla("SELECT * FROM Usuarios WHERE Usuario LIKE '%"+cajaTexto.getText()+"%'");
         else
             actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);;
     }
        
-    public void sinCaracteresEspeciales(KeyEvent evt) {
+    private void sinCaracteresEspeciales(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
     
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "id Empleado", "Usuario"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-    }
-    
-    public final void actualizarTabla(String consulta){
+    private void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
         ResultSetTableModel modeloDatos = null;
@@ -261,13 +216,7 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JTextField cajaTexto;
     private javax.swing.JLabel etiqueta;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

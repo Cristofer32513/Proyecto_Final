@@ -7,12 +7,6 @@ import modelo.Usuario;
 
 public class EditarLogin extends javax.swing.JDialog {
 
-    public EditarLogin(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        setLocationRelativeTo(null);
-    }
-
     public EditarLogin(java.awt.Frame proveedor, boolean modal, int id, String usuario, String contraseña) {
         super(proveedor, modal);
         initComponents();
@@ -45,7 +39,8 @@ public class EditarLogin extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(370, 130));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnGuardar.setText("Guardar");
+        btnGuardar.setText("Actualizar");
+        btnGuardar.setToolTipText("Actualiza el registro con los nuevos datos");
         btnGuardar.setNextFocusableComponent(btnCancelar);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +50,7 @@ public class EditarLogin extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Descartar accion");
         btnCancelar.setNextFocusableComponent(cajaUsuario);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +59,7 @@ public class EditarLogin extends javax.swing.JDialog {
         });
 
         cajaUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaUsuario.setToolTipText("Nombre  del usuario");
         cajaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaUsuarioKeyPressed(evt);
@@ -78,6 +75,7 @@ public class EditarLogin extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel3.setText("Contraseña:");
 
+        CajaPassword.setToolTipText("Contraseña");
         CajaPassword.setPreferredSize(new java.awt.Dimension(111, 22));
         CajaPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -150,14 +148,11 @@ public class EditarLogin extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             usuario = new Usuario(id, cajaUsuario.getText(), new String(CajaPassword.getPassword()));
 
-            if(USUARIO_DAO.modificarUsuario(usuario)){
-                JOptionPane.showMessageDialog(null, "Cambios guardados correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(USUARIO_DAO.modificarUsuario(usuario))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al actulizar el Login del Empleado.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Campo(s) vacio(s).", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -190,13 +185,13 @@ public class EditarLogin extends javax.swing.JDialog {
             sinCaracteresEspeciales(evt);
     }//GEN-LAST:event_CajaPasswordKeyTyped
 
-    public void sinCaracteresEspeciales(KeyEvent evt) {
+    private void sinCaracteresEspeciales(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') )
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaUsuario.getText().trim().equals(""))

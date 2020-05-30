@@ -187,8 +187,6 @@ public class Categoria extends javax.swing.JPanel {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        id = 0;
-        nom = desc = "";
         cajaTexto.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 

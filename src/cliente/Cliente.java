@@ -326,8 +326,6 @@ public class Cliente extends javax.swing.JPanel {
     private void limpiar(){
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         grupo.clearSelection();
-        id = 0;
-        nom = pA = sA = tel = call = col = mun = "";
         cajaTexto.setText("");
         cajaTexto.setToolTipText("Buscar");
         habilitarCampos(false, false, true);

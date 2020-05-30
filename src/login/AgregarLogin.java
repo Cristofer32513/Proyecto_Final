@@ -7,12 +7,6 @@ import modelo.Usuario;
 
 public class AgregarLogin extends javax.swing.JDialog {
 
-    public AgregarLogin(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        setLocationRelativeTo(null);
-    }
-    
     public AgregarLogin(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
         initComponents();
@@ -49,7 +43,7 @@ public class AgregarLogin extends javax.swing.JDialog {
         jLabel4.setText("Contraseña:");
 
         cajaUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cajaUsuario.setToolTipText("Nombre de la categoria");
+        cajaUsuario.setToolTipText("Nombre de usuario");
         cajaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cajaUsuarioKeyPressed(evt);
@@ -61,13 +55,14 @@ public class AgregarLogin extends javax.swing.JDialog {
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnAgregar.setText("Agregar");
-        btnAgregar.setToolTipText("Agregar la Categoria");
+        btnAgregar.setToolTipText("Agregar el login");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
 
+        cajaPassword.setToolTipText("Contraseña");
         cajaPassword.setPreferredSize(new java.awt.Dimension(111, 23));
         cajaPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -132,14 +127,11 @@ public class AgregarLogin extends javax.swing.JDialog {
         if(verificarEstadoComponentes()){
             usuario = new Usuario(id, cajaUsuario.getText(), new String(cajaPassword.getPassword()));
 
-            if(USUARIO_DAO.agregarUsuario(usuario)){
-                JOptionPane.showMessageDialog(null, "Login agregado correctamente al Empleado.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            if(USUARIO_DAO.agregarUsuario(usuario))
                 this.dispose();
-            }
             else
                 JOptionPane.showMessageDialog(null, "Error al agregar el Login al Empleado.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Campo(s) vacio(s).", "Precaucion", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -167,13 +159,13 @@ public class AgregarLogin extends javax.swing.JDialog {
             sinCaracteresEspeciales(evt);
     }//GEN-LAST:event_cajaPasswordKeyTyped
 
-    public void sinCaracteresEspeciales(KeyEvent evt) {
+    private void sinCaracteresEspeciales(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') )
             evt.consume();
     }
     
-    public boolean verificarEstadoComponentes(){
+    private boolean verificarEstadoComponentes(){
         boolean bandera = true;
 
         if(cajaUsuario.getText().trim().equals(""))
