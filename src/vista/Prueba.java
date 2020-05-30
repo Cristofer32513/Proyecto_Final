@@ -9,6 +9,7 @@ import categoria.Categoria;
 import cliente.Cliente;
 import empleado.Empleado;
 import java.awt.BorderLayout;
+import javax.swing.SwingUtilities;
 import login.Login;
 import producto.Producto;
 import proveedor.Proveedor;
@@ -53,9 +54,17 @@ public class Prueba extends javax.swing.JFrame {
         venta.setLocation(0,0);
         venta.setSize(800, 400);
         
-        jPanel1.add(venta, BorderLayout.CENTER);
-        jPanel1.revalidate();
-        jPanel1.repaint();
+        VentanaUsuarios venus = new VentanaUsuarios();
+        venus.setLocation(0,0);
+        venus.setSize(800, 400);
+        
+        //jPanel1.add(venus, BorderLayout.CENTER);
+        //jPanel1.revalidate();
+        //jPanel1.repaint();
+        
+        SwingUtilities.invokeLater(() -> {
+            new VentanaUsuarios().setVisible(true);
+        });
     }
 
     /**
