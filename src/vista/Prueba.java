@@ -6,6 +6,7 @@
 package vista;
 
 import categoria.Categoria;
+import cliente.Cliente;
 import java.awt.BorderLayout;
 import login.Login;
 
@@ -28,8 +29,11 @@ public class Prueba extends javax.swing.JFrame {
         login.setLocation(0,0);
         login.setSize(800, 400);
         
+        Cliente cliente = new Cliente();
+        cliente.setLocation(0,0);
+        cliente.setSize(800, 400);
         
-        jPanel1.add(login, BorderLayout.CENTER);
+        jPanel1.add(cliente, BorderLayout.CENTER);
         jPanel1.revalidate();
         jPanel1.repaint();
     }

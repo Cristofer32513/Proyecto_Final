@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
+import modelo.Cliente;
 import modelo.Usuario;
 
 public class Conexion {
@@ -151,4 +152,44 @@ public class Conexion {
         
         return rs;
     }
+    
+    public boolean ejecutarAlta(String sql, Cliente cliente) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, cliente.getNombre());
+            pstm.setString(2, cliente.getPrimerApellido());
+            pstm.setString(3, cliente.getSegundoApellido());
+            pstm.setString(4, cliente.getTelefono());
+            pstm.setString(5, cliente.getCalle());
+            pstm.setString(6, cliente.getColonia());
+            pstm.setString(7, cliente.getMunicipio());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+    
+    public boolean ejecutarModificacion(String sql, Cliente cliente) {
+        try {
+            pstm=conexion.prepareStatement(sql);
+            pstm.setString(1, cliente.getNombre());
+            pstm.setString(2, cliente.getPrimerApellido());
+            pstm.setString(3, cliente.getSegundoApellido());
+            pstm.setString(4, cliente.getTelefono());
+            pstm.setString(5, cliente.getCalle());
+            pstm.setString(6, cliente.getColonia());
+            pstm.setString(7, cliente.getMunicipio());
+            pstm.setInt(8, cliente.getIdCliente());
+            int ejecucion;
+            ejecucion=pstm.executeUpdate();
+            
+            return ejecucion==1;
+        }
+        catch(SQLException e){return false;}
+    }
+    
+    
+    
 }
