@@ -221,6 +221,9 @@ public class Login_Usuario extends javax.swing.JFrame {
                 }
                 else{
                     System.out.println("ventana empleado");
+                    SwingUtilities.invokeLater(() -> {
+                        new Prueba().setVisible(true);
+                    });
                 }   
             }
             else
