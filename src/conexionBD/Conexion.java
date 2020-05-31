@@ -323,9 +323,7 @@ public class Conexion {
             try {
                 conexion.rollback();
                 conexion.setAutoCommit(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (SQLException ex) {}
             return false;
         }
     }
@@ -339,9 +337,6 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             
             return ejecucion==1;
-        }
-        catch(SQLException e){
-            System.out.println(e);
-            return false;}
+        } catch(SQLException e){return false;}
     }
 }

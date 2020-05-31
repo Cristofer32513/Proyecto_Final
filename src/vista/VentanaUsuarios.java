@@ -42,8 +42,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
         btnVentas1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEstadisticas = new javax.swing.JButton();
         pane = new javax.swing.JPanel();
         bienvenido = new javax.swing.JLabel();
 
@@ -143,14 +142,15 @@ public class VentanaUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("reporte");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEstadisticas.setBackground(new java.awt.Color(51, 51, 51));
+        btnEstadisticas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/estadisticas.png"))); // NOI18N
+        btnEstadisticas.setText("ESTADISTICAS");
+        btnEstadisticas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEstadisticasActionPerformed(evt);
             }
         });
-
-        jButton2.setText("jButton2");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -170,8 +170,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                                 .addComponent(btnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(BtnCategorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(btnEstadisticas))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -191,10 +190,8 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnEstadisticas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVentas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
@@ -308,7 +305,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVentas1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
         Reportes reportes = new Reportes();
         reportes.setLocation(0,0);
         reportes.setSize(800, 400);
@@ -316,19 +313,18 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         pane.add(reportes, BorderLayout.CENTER);
         pane.revalidate();
         pane.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEstadisticasActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCategorias;
     private javax.swing.JLabel bienvenido;
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedores;
     private javax.swing.JButton btnVentas;
     private javax.swing.JButton btnVentas1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel pane;
