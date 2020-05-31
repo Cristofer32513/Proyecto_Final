@@ -237,6 +237,7 @@ public class Categoria extends javax.swing.JPanel {
         } catch (ClassNotFoundException | SQLException e) {}
 
         tabla.setModel(modeloDatos);
+        
     }
        
     // Variables declaration - do not modify//GEN-BEGIN:variables

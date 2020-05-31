@@ -19,6 +19,7 @@ import venta.Venta;
 import producto.ReporteProductos;
 import producto.Producto;
 import proveedor.Proveedor;
+import reportes.Reportes;
 
 public class VentanaUsuarios extends javax.swing.JFrame {
     
@@ -308,21 +309,13 @@ public class VentanaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentas1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Conexion con = Conexion.getConexion();
-        con.abrirConexion();
-        try {
-            @SuppressWarnings("UnusedAssignment")
-            JasperReport reporte = null;
-            String path = "src\\reportes\\reporte.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
-            @SuppressWarnings("static-access")
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
-            JasperViewer view = new JasperViewer(jprint, false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Reportes reportes = new Reportes();
+        reportes.setLocation(0,0);
+        reportes.setSize(800, 400);
+        pane.removeAll();
+        pane.add(reportes, BorderLayout.CENTER);
+        pane.revalidate();
+        pane.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
