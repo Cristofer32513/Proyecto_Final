@@ -1,53 +1,25 @@
 package vista;
 
-import categoria.Categoria;
-import cliente.Cliente;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-/*import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;*/
-import conexionBD.Conexion;
-import controlador.ProductoDAO;
 import empleado.Empleado;
+import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import login.Login;
-import venta.Venta;
-import producto.ReporteProductos;
-import producto.Producto;
-import proveedor.Proveedor;
 
-/**
- *
- * @author casas
- */
-public class VentanaUsuarios extends javax.swing.JFrame {
+public class VentanaAdmin extends javax.swing.JFrame {
 
-    
-    public VentanaUsuarios(int id) {
+    public VentanaAdmin() {
         initComponents();
         setLocationRelativeTo(null);
-        this.id = id;
     }
-
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        btnClientes = new javax.swing.JButton();
-        btnProveedores = new javax.swing.JButton();
-        BtnCategorias = new javax.swing.JButton();
-        btnProductos = new javax.swing.JButton();
-        btnVentas = new javax.swing.JButton();
+        btnEmpleados = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
         btnVentas1 = new javax.swing.JButton();
@@ -55,69 +27,32 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         bienvenido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(971, 400));
         setMinimumSize(new java.awt.Dimension(971, 400));
         setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
-        btnClientes.setBackground(new java.awt.Color(51, 51, 51));
-        btnClientes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientes.png"))); // NOI18N
-        btnClientes.setText("CLIENTES");
-        btnClientes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnClientes.setPreferredSize(new java.awt.Dimension(115, 35));
-        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+        btnEmpleados.setBackground(new java.awt.Color(51, 51, 51));
+        btnEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empleados.png"))); // NOI18N
+        btnEmpleados.setText("EMPLEADOS");
+        btnEmpleados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEmpleados.setPreferredSize(new java.awt.Dimension(115, 35));
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientesActionPerformed(evt);
+                btnEmpleadosActionPerformed(evt);
             }
         });
 
-        btnProveedores.setBackground(new java.awt.Color(51, 51, 51));
-        btnProveedores.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proveedores.png"))); // NOI18N
-        btnProveedores.setText("PROVEEDORES");
-        btnProveedores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnProveedores.setPreferredSize(new java.awt.Dimension(115, 35));
-        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuarios.setBackground(new java.awt.Color(51, 51, 51));
+        btnUsuarios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png"))); // NOI18N
+        btnUsuarios.setText("USUARIOS");
+        btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnUsuarios.setPreferredSize(new java.awt.Dimension(115, 35));
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProveedoresActionPerformed(evt);
-            }
-        });
-
-        BtnCategorias.setBackground(new java.awt.Color(51, 51, 51));
-        BtnCategorias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        BtnCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/categorias.png"))); // NOI18N
-        BtnCategorias.setText("CATEGORIAS");
-        BtnCategorias.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnCategorias.setPreferredSize(new java.awt.Dimension(115, 35));
-        BtnCategorias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCategoriasActionPerformed(evt);
-            }
-        });
-
-        btnProductos.setBackground(new java.awt.Color(51, 51, 51));
-        btnProductos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
-        btnProductos.setText("PRODUCTOS");
-        btnProductos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnProductos.setPreferredSize(new java.awt.Dimension(115, 35));
-        btnProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProductosActionPerformed(evt);
-            }
-        });
-
-        btnVentas.setBackground(new java.awt.Color(51, 51, 51));
-        btnVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
-        btnVentas.setText("VENTAS");
-        btnVentas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnVentas.setPreferredSize(new java.awt.Dimension(115, 35));
-        btnVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVentasActionPerformed(evt);
+                btnUsuariosActionPerformed(evt);
             }
         });
 
@@ -162,11 +97,8 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                .addComponent(btnProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BtnCategorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnVentas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -177,15 +109,9 @@ public class VentanaUsuarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVentas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -234,55 +160,25 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        Cliente cliente = new Cliente();
-        cliente.setLocation(0,0);
-        cliente.setSize(800, 400);
+    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+        Empleado empleado = new Empleado();
+        empleado.setLocation(0,0);
+        empleado.setSize(800, 400);
         pane.removeAll();  
-        pane.add(cliente, BorderLayout.CENTER);
+        pane.add(empleado, BorderLayout.CENTER);
         pane.revalidate();
         pane.repaint();
-    }//GEN-LAST:event_btnClientesActionPerformed
+    }//GEN-LAST:event_btnEmpleadosActionPerformed
 
-    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
-        Proveedor prov = new Proveedor();
-        prov.setLocation(0,0);
-        prov.setSize(800, 400);
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        Login login = new Login();
+        login.setLocation(0,0);
+        login.setSize(800, 400);
         pane.removeAll();
-        pane.add(prov, BorderLayout.CENTER);
+        pane.add(login, BorderLayout.CENTER);
         pane.revalidate();
         pane.repaint();
-    }//GEN-LAST:event_btnProveedoresActionPerformed
-
-    private void BtnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCategoriasActionPerformed
-        Categoria categoria = new Categoria();
-        categoria.setLocation(0,0);
-        categoria.setSize(800, 400);
-        pane.removeAll();
-        pane.add(categoria, BorderLayout.CENTER);
-        pane.revalidate();
-        pane.repaint();
-    }//GEN-LAST:event_BtnCategoriasActionPerformed
-
-    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
-        Producto prod = new Producto();
-        prod.setLocation(0,0);
-        prod.setSize(800, 400);
-        pane.removeAll();
-        pane.add(prod, BorderLayout.CENTER);
-        pane.revalidate();
-        pane.repaint();
-    }//GEN-LAST:event_btnProductosActionPerformed
-
-    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
-        Venta venta = new Venta(this.id);
-        venta.setLocation(0,0);
-        venta.setSize(800, 400);
-        pane.removeAll();
-        pane.add(venta, BorderLayout.CENTER);
-        pane.revalidate();
-        pane.repaint();
-    }//GEN-LAST:event_btnVentasActionPerformed
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         pane.removeAll();
@@ -301,18 +197,13 @@ public class VentanaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentas1ActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnCategorias;
     private javax.swing.JLabel bienvenido;
-    private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnProductos;
-    private javax.swing.JButton btnProveedores;
-    private javax.swing.JButton btnVentas;
+    private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnVentas1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
-    private ReporteProductos describir;
-    private int id;
 }

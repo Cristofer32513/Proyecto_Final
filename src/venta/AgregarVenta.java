@@ -215,7 +215,6 @@ public class AgregarVenta extends javax.swing.JDialog {
                 VENTA_DAO.agregarTiene(venta.getIdProducto());
                 VENTA_DAO.agregarEfectua(venta.getIdEmpleado());
                 VENTA_DAO.agregarRealiza(venta.getIdCliente());
-                JOptionPane.showMessageDialog(null, "Venta registrada correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
             } else
                 JOptionPane.showMessageDialog(null, "Error al registrar la Venta.", "Error", JOptionPane.ERROR_MESSAGE);

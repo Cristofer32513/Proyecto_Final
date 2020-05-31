@@ -1,4 +1,3 @@
-
 package vista;
 
 import controlador.UsuarioDAO;
@@ -217,19 +216,20 @@ public class Login_Usuario extends javax.swing.JFrame {
             if(usua != null){
                 
                 if(usua.getUsuario().equals("Admin")){
-                    System.out.println("ventana administradora");
+                    this.dispose();
+                    SwingUtilities.invokeLater(() -> {
+                        new VentanaAdmin().setVisible(true);
+                    });
                 }
                 else{
-                    System.out.println("ventana empleado");
+                    this.dispose();
                     SwingUtilities.invokeLater(() -> {
-                        new Prueba().setVisible(true);
+                        new VentanaUsuarios(usua.getIdEmpleado()).setVisible(true);
                     });
                 }   
-            }
-            else
+            } else
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrecta.", "Error!", JOptionPane.ERROR_MESSAGE);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(rootPane, "Aun existen campos vacios.", "Cuidado!!!", JOptionPane.WARNING_MESSAGE);
     }    
     
