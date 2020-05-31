@@ -1,6 +1,5 @@
 package venta;
 
-import producto.*;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import modelo.ResultSetTableModel;
@@ -35,7 +34,8 @@ public class ConsultarCategoria extends javax.swing.JDialog {
         etiqueta.setText("Buscar:");
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cajaTexto.setToolTipText("Nombre Categoria");
+        cajaTexto.setToolTipText("Nombre de la categoria");
+        cajaTexto.setNextFocusableComponent(btnLimpiar);
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cajaTextoKeyReleased(evt);
@@ -45,9 +45,10 @@ public class ConsultarCategoria extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Categorias");
         jLabel6.setPreferredSize(new java.awt.Dimension(130, 30));
@@ -66,6 +67,8 @@ public class ConsultarCategoria extends javax.swing.JDialog {
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setToolTipText("Limpiar area de busqueda");
+        btnLimpiar.setNextFocusableComponent(cajaTexto);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
@@ -164,7 +167,6 @@ public class ConsultarCategoria extends javax.swing.JDialog {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        id = 0;
         cajaTexto.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
@@ -179,54 +181,17 @@ public class ConsultarCategoria extends javax.swing.JDialog {
         buscar();
     }//GEN-LAST:event_cajaTextoKeyReleased
  
-    public void buscar(){
+    private void buscar(){
         if(!cajaTexto.getText().equals(""))
             actualizarTabla("SELECT * FROM Categorias WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
         else
             actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
     
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
-    }
-    
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "id Categoria", "Nombre", "Descripcion"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
     }
     
     public final void actualizarTabla(String consulta){
@@ -240,11 +205,7 @@ public class ConsultarCategoria extends javax.swing.JDialog {
 
         tabla.setModel(modeloDatos);
     }
-    
-    public final void iniciar(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-    }
-    
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JTextField cajaTexto;

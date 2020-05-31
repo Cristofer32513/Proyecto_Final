@@ -38,11 +38,13 @@ public class AgregarVenta extends javax.swing.JDialog {
         setTitle("Agregar Producto");
         setMaximumSize(new java.awt.Dimension(490, 247));
         setMinimumSize(new java.awt.Dimension(490, 247));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 245));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 245));
 
         cajaNombreCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaNombreCliente.setToolTipText("Nombre del cliente");
         cajaNombreCliente.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -58,6 +60,7 @@ public class AgregarVenta extends javax.swing.JDialog {
         jLabel5.setText("Nombre Producto:");
 
         cajaidCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaidCliente.setToolTipText("Id del cliente");
         cajaidCliente.setEnabled(false);
         cajaidCliente.setNextFocusableComponent(cajaNombreCliente);
 
@@ -65,14 +68,17 @@ public class AgregarVenta extends javax.swing.JDialog {
         jLabel9.setText("Cantidad:");
 
         cajanombreProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajanombreProducto.setToolTipText("Nombre del producto");
         cajanombreProducto.setEnabled(false);
 
         cajaIdProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaIdProducto.setToolTipText("Id del producto");
         cajaIdProducto.setEnabled(false);
 
         btnBuscarProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnBuscarProducto.setText(". . .");
-        btnBuscarProducto.setNextFocusableComponent(btnAgregar);
+        btnBuscarProducto.setToolTipText("Buscar producto");
+        btnBuscarProducto.setNextFocusableComponent(spinnerCantidad);
         btnBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarProductoActionPerformed(evt);
@@ -81,11 +87,13 @@ public class AgregarVenta extends javax.swing.JDialog {
 
         spinnerCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         spinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10000, 1));
+        spinnerCantidad.setToolTipText("Cantidad a comprar");
         spinnerCantidad.setMinimumSize(new java.awt.Dimension(95, 23));
-        spinnerCantidad.setNextFocusableComponent(btnBuscarCliente);
+        spinnerCantidad.setNextFocusableComponent(btnAgregar);
 
         btnBuscarCliente.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnBuscarCliente.setText(". . .");
+        btnBuscarCliente.setToolTipText("Buscar cliente");
         btnBuscarCliente.setNextFocusableComponent(btnBuscarProducto);
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +103,8 @@ public class AgregarVenta extends javax.swing.JDialog {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setNextFocusableComponent(cajaidCliente);
+        btnCancelar.setToolTipText("Descartar venta");
+        btnCancelar.setNextFocusableComponent(btnBuscarCliente);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -103,7 +112,8 @@ public class AgregarVenta extends javax.swing.JDialog {
         });
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnAgregar.setText("Agregar");
+        btnAgregar.setText("Registrar");
+        btnAgregar.setToolTipText("Registrar venta");
         btnAgregar.setNextFocusableComponent(btnCancelar);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +137,7 @@ public class AgregarVenta extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                         .addComponent(btnCancelar))
                     .addComponent(spinnerCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cajanombreProducto)
@@ -199,8 +209,7 @@ public class AgregarVenta extends javax.swing.JDialog {
                 VENTA_DAO.agregarRealiza(venta.getIdCliente());
                 JOptionPane.showMessageDialog(null, "Venta registrada correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
-            }
-            else
+            } else
                 JOptionPane.showMessageDialog(null, "Error al registrar la Venta.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else

@@ -51,7 +51,7 @@ public class Prueba extends javax.swing.JFrame {
         prod.setLocation(0,0);
         prod.setSize(800, 400);
         
-        Venta venta = new Venta();
+        Venta venta = new Venta(0);
         venta.setLocation(0,0);
         venta.setSize(800, 400);
         
@@ -59,13 +59,13 @@ public class Prueba extends javax.swing.JFrame {
         venus.setLocation(0,0);
         venus.setSize(800, 400);
         
-        jPanel1.add(prov, BorderLayout.CENTER);
-        jPanel1.revalidate();
-        jPanel1.repaint();
+        //jPanel1.add(venta, BorderLayout.CENTER);
+        //jPanel1.revalidate();
+        //jPanel1.repaint();
         
-        //SwingUtilities.invokeLater(() -> {
-        //    new VentanaUsuarios().setVisible(true);
-        //});
+        SwingUtilities.invokeLater(() -> {
+            new VentanaUsuarios().setVisible(true);
+        });
     }
 
     /**

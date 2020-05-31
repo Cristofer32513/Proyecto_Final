@@ -33,13 +33,16 @@ public class ConsultarProducto extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 400));
+        setResizable(false);
 
         etiqueta.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         etiqueta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta.setText("Buscar:");
 
         cajaTexto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaTexto.setToolTipText("Buscar");
         cajaTexto.setEnabled(false);
+        cajaTexto.setNextFocusableComponent(btnLimpiar);
         cajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cajaTextoKeyReleased(evt);
@@ -52,7 +55,9 @@ public class ConsultarProducto extends javax.swing.JDialog {
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clean.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setToolTipText("Limpiar area de busqueda");
         btnLimpiar.setEnabled(false);
+        btnLimpiar.setNextFocusableComponent(radioNombre);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
@@ -156,9 +161,10 @@ public class ConsultarProducto extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Productos");
         jLabel6.setPreferredSize(new java.awt.Dimension(130, 30));
@@ -232,20 +238,19 @@ public class ConsultarProducto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNombreActionPerformed
-        etiqueta.setText("Nombre:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("Nombre del producto");
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true);
     }//GEN-LAST:event_radioNombreActionPerformed
 
     private void radioMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMarcaActionPerformed
-        etiqueta.setText("Marca:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("Marca del producto");
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         habilitarCampos(true, true);
     }//GEN-LAST:event_radioMarcaActionPerformed
 
     private void radioProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioProveedorActionPerformed
-        etiqueta.setText("id Proveedor:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("id del proveedor");
         ConsultarProveedor consultar = new ConsultarProveedor(null, true);
         consultar.setVisible(true);
         habilitarCampos(false, true);
@@ -262,39 +267,41 @@ public class ConsultarProducto extends javax.swing.JDialog {
     }//GEN-LAST:event_cajaTextoKeyTyped
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = 0;
-        nombre = "";
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false);
+        limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    public void buscar(){
+    private void limpiar(){
+        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
+        grupo.clearSelection();
+        cajaTexto.setText("");
+        cajaTexto.setToolTipText("Buscar");
+        habilitarCampos(false, false); 
+    }
+    
+    private void buscar(){
         if(radioNombre.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE Nombre LIKE '%"+cajaTexto.getText()+"%'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioMarca.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE Marca LIKE '%"+cajaTexto.getText()+"%'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioProveedor.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE id_Proveedor = '"+cajaTexto.getText()+"'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioCategoria.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE id_Categoria = '"+cajaTexto.getText()+"'");
             else
-                limpiarTabla();
+                actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
     }
     
@@ -307,8 +314,7 @@ public class ConsultarProducto extends javax.swing.JDialog {
     }//GEN-LAST:event_tablaMouseReleased
 
     private void radioCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCategoriaActionPerformed
-        etiqueta.setText("id Categoria:");
-        limpiarTabla();
+        cajaTexto.setToolTipText("id de la categoria:");
         ConsultarCategoria consultar = new ConsultarCategoria(null, true);
         consultar.setVisible(true);
         habilitarCampos(false, true);
@@ -341,70 +347,19 @@ public class ConsultarProducto extends javax.swing.JDialog {
         buscar();
     }//GEN-LAST:event_cajaTextoKeyReleased
 
-    public void habilitarCampos(boolean caja, boolean btnLim){
+    private void habilitarCampos(boolean caja, boolean btnLim){
         cajaTexto.setEnabled(caja);
         cajaTexto.setText("");
         btnLimpiar.setEnabled(btnLim);          
     }
     
-    public void soloLetras(KeyEvent evt) {
+    private void soloLetras(KeyEvent evt) {
         char c = evt.getKeyChar();
         if( (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && c != KeyEvent.VK_SPACE && c != KeyEvent.VK_PERIOD)
             evt.consume();
     }
-    
-    public void nuevo(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        grupo.clearSelection();
-        id = 0;
-        cajaTexto.setText("");
-        etiqueta.setText("Buscar...");
-        habilitarCampos(false, false);
-    }
-    
-    public void limpiarTabla(){
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id Producto", "Nombre", "Marca", "Precio", "Stock", "id_Proveedor", "id_Categoria"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-    }
-    
-    public final void actualizarTabla(String consulta){
+        
+    private void actualizarTabla(String consulta){
         String controlador = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
         ResultSetTableModel modeloDatos = null;
@@ -415,11 +370,7 @@ public class ConsultarProducto extends javax.swing.JDialog {
 
         tabla.setModel(modeloDatos);
     }
-    
-    public final void iniciar(){
-        actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-    }
-    
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JTextField cajaTexto;
