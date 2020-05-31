@@ -247,7 +247,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Venta venta = new Venta(0);
+        Venta venta = new Venta(1);
         venta.setLocation(0,0);
         venta.setSize(800, 400);
         pane.removeAll();

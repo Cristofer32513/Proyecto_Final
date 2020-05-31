@@ -31,6 +31,7 @@ public class ConsultarProveedor extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
+        setTitle("Buscar proveedor");
         setMinimumSize(new java.awt.Dimension(800, 400));
         setResizable(false);
 

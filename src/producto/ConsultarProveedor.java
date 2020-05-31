@@ -31,7 +31,9 @@ public class ConsultarProveedor extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
+        setTitle("Buscar Proveedor");
         setMinimumSize(new java.awt.Dimension(800, 400));
+        setResizable(false);
 
         etiqueta.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         etiqueta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

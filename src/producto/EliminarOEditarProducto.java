@@ -46,8 +46,9 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         btnBuscarCategoria = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Eliminar Producto");
+        setTitle("Eliminar o editar producto");
         setMinimumSize(new java.awt.Dimension(490, 295));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 245));
         jPanel1.setMinimumSize(new java.awt.Dimension(490, 245));
@@ -134,6 +135,7 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         });
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Eliminar el producto");
         btnEliminar.setNextFocusableComponent(btnCancelar);
@@ -144,6 +146,7 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("Descartar accion");
         btnCancelar.setNextFocusableComponent(cajaNombre);
@@ -154,6 +157,7 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         });
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
         btnEditar.setText("Actualizar");
         btnEditar.setToolTipText("Actualizar el registro con los nuevos datos");
         btnEditar.setNextFocusableComponent(btnEliminar);
@@ -164,7 +168,7 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         });
 
         btnBuscarProveedor.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnBuscarProveedor.setText(". . .");
+        btnBuscarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscarProveedor.setToolTipText("Buscar proveedor");
         btnBuscarProveedor.setNextFocusableComponent(btnBuscarCategoria);
         btnBuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +178,7 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         });
 
         btnBuscarCategoria.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnBuscarCategoria.setText(". . .");
+        btnBuscarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscarCategoria.setToolTipText("Buscar categoria");
         btnBuscarCategoria.setNextFocusableComponent(btnEditar);
         btnBuscarCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -188,15 +192,9 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEditar)
-                        .addGap(102, 102, 102)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel9)
@@ -219,7 +217,15 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnBuscarProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnBuscarCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(btnBuscarCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(46, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar)
+                        .addGap(36, 36, 36)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -267,9 +273,7 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

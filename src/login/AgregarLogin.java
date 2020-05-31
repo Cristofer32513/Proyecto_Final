@@ -26,7 +26,7 @@ public class AgregarLogin extends javax.swing.JDialog {
         cajaPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Categoria");
+        setTitle("Agregar login");
         setIconImage(null);
         setMaximumSize(new java.awt.Dimension(385, 170));
         setMinimumSize(new java.awt.Dimension(385, 170));
@@ -54,6 +54,7 @@ public class AgregarLogin extends javax.swing.JDialog {
         });
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add2.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.setToolTipText("Agregar el login");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {

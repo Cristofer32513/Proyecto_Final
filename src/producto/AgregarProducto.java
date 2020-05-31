@@ -36,9 +36,10 @@ public class AgregarProducto extends javax.swing.JDialog {
         btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Producto");
+        setTitle("Agregar producto");
         setMaximumSize(new java.awt.Dimension(400, 264));
         setMinimumSize(new java.awt.Dimension(400, 264));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(400, 264));
         jPanel1.setMinimumSize(new java.awt.Dimension(400, 264));
@@ -95,7 +96,7 @@ public class AgregarProducto extends javax.swing.JDialog {
         cajaIdCategoria.setEnabled(false);
 
         btnBuscarCategoria.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnBuscarCategoria.setText(". . .");
+        btnBuscarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscarCategoria.setToolTipText("Buscar categoria");
         btnBuscarCategoria.setNextFocusableComponent(btnAgregar);
         btnBuscarCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +116,7 @@ public class AgregarProducto extends javax.swing.JDialog {
         spinnerStock.setNextFocusableComponent(btnBuscarProveedor);
 
         btnBuscarProveedor.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnBuscarProveedor.setText(". . .");
+        btnBuscarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscarProveedor.setToolTipText("Buscar proveedor");
         btnBuscarProveedor.setNextFocusableComponent(btnBuscarCategoria);
         btnBuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +126,7 @@ public class AgregarProducto extends javax.swing.JDialog {
         });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("Descartar el ingreso del producto");
         btnCancelar.setNextFocusableComponent(cajaNombre);
@@ -135,6 +137,7 @@ public class AgregarProducto extends javax.swing.JDialog {
         });
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add2.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.setToolTipText("Agregar producto");
         btnAgregar.setNextFocusableComponent(btnCancelar);
@@ -149,32 +152,36 @@ public class AgregarProducto extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3)
-                    .addComponent(btnAgregar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(spinnerStock, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                    .addComponent(cajaMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cajaNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spinnerPrecio, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cajaIdCategoria)
-                            .addComponent(cajaIdProveedor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spinnerStock, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(cajaMarca, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cajaNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spinnerPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cajaIdCategoria)
+                                    .addComponent(cajaIdProveedor))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAgregar)
+                        .addGap(54, 54, 54)
+                        .addComponent(btnCancelar)
+                        .addGap(36, 36, 36)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

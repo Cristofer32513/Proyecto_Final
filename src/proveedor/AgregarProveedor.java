@@ -30,7 +30,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
         cajaNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Proveedor");
+        setTitle("Agregar proveedor");
         setMaximumSize(new java.awt.Dimension(470, 225));
         setMinimumSize(new java.awt.Dimension(470, 225));
         setPreferredSize(new java.awt.Dimension(470, 225));
@@ -76,6 +76,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
         });
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add2.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.setToolTipText("Agregar proveedor");
         btnAgregar.setName(""); // NOI18N
@@ -87,6 +88,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
         });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("Descartar  ingreso de proveedor");
         btnCancelar.setNextFocusableComponent(cajaNombre);
@@ -130,12 +132,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(67, 67, 67)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cajaTelefono)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar))))
+                        .addComponent(cajaTelefono))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -147,6 +144,12 @@ public class AgregarProveedor extends javax.swing.JDialog {
                             .addComponent(cajaPApellido)
                             .addComponent(cajaSApellido))))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(btnAgregar)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

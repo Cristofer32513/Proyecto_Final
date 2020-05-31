@@ -27,7 +27,9 @@ public class ConsultarCategoria extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
+        setTitle("Buscar Categoria");
         setMinimumSize(new java.awt.Dimension(800, 400));
+        setResizable(false);
 
         etiqueta.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         etiqueta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

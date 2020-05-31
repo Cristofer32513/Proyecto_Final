@@ -1,7 +1,9 @@
 package venta;
 
+import controlador.ProductoDAO;
 import controlador.VentaDAO;
 import javax.swing.JOptionPane;
+import modelo.Producto;
 import modelo.Venta;
 
 public class AgregarVenta extends javax.swing.JDialog {
@@ -76,7 +78,7 @@ public class AgregarVenta extends javax.swing.JDialog {
         cajaIdProducto.setEnabled(false);
 
         btnBuscarProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnBuscarProducto.setText(". . .");
+        btnBuscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscarProducto.setToolTipText("Buscar producto");
         btnBuscarProducto.setNextFocusableComponent(spinnerCantidad);
         btnBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +94,7 @@ public class AgregarVenta extends javax.swing.JDialog {
         spinnerCantidad.setNextFocusableComponent(btnAgregar);
 
         btnBuscarCliente.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnBuscarCliente.setText(". . .");
+        btnBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscarCliente.setToolTipText("Buscar cliente");
         btnBuscarCliente.setNextFocusableComponent(btnBuscarProducto);
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +104,7 @@ public class AgregarVenta extends javax.swing.JDialog {
         });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("Descartar venta");
         btnCancelar.setNextFocusableComponent(btnBuscarCliente);
@@ -112,6 +115,7 @@ public class AgregarVenta extends javax.swing.JDialog {
         });
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add2.png"))); // NOI18N
         btnAgregar.setText("Registrar");
         btnAgregar.setToolTipText("Registrar venta");
         btnAgregar.setNextFocusableComponent(btnCancelar);
@@ -128,29 +132,33 @@ public class AgregarVenta extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spinnerCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                            .addComponent(cajanombreProducto)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cajaidCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cajaNombreCliente)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cajaIdProducto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
-                    .addComponent(spinnerCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cajanombreProducto)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cajaidCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cajaNombreCliente)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cajaIdProducto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGap(60, 60, 60)
+                        .addComponent(btnCancelar)
+                        .addGap(78, 78, 78))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +234,9 @@ public class AgregarVenta extends javax.swing.JDialog {
         consultar.setVisible(true);
         cajaIdProducto.setText(String.valueOf(consultar.id));
         cajanombreProducto.setText(consultar.nombre);
+        Producto prod;
+        prod = PRODUCTODAO.buscarProducto(cajaIdProducto.getText());
+        spinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, prod.getStock(), 1));
         consultar.dispose();
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
 
@@ -274,4 +285,5 @@ public class AgregarVenta extends javax.swing.JDialog {
     private Venta venta;
     private int id, idEmp=0;
     final static VentaDAO VENTA_DAO = new VentaDAO();
+    final static ProductoDAO PRODUCTODAO = new ProductoDAO();
 }

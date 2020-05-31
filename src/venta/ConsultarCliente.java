@@ -34,6 +34,7 @@ public class ConsultarCliente extends javax.swing.JDialog {
         radioColonia = new javax.swing.JRadioButton();
         radioMunicipio = new javax.swing.JRadioButton();
 
+        setTitle("Buscar cliente");
         setMinimumSize(new java.awt.Dimension(800, 400));
         setResizable(false);
 

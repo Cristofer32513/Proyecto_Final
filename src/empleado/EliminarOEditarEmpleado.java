@@ -50,10 +50,8 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Eliminar Empleado");
-        setMaximumSize(new java.awt.Dimension(460, 350));
+        setTitle("Eliminar o editar empleado");
         setMinimumSize(new java.awt.Dimension(460, 350));
-        setPreferredSize(new java.awt.Dimension(460, 350));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(490, 264));
@@ -61,9 +59,11 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(490, 264));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Eliminar empleado");
         btnEliminar.setNextFocusableComponent(btnCancelar);
+        btnEliminar.setPreferredSize(new java.awt.Dimension(140, 30));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -71,9 +71,11 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("Descartar accion");
         btnCancelar.setNextFocusableComponent(cajaNombre);
+        btnCancelar.setPreferredSize(new java.awt.Dimension(140, 30));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -209,9 +211,11 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
         cajaidEmpleado.setEnabled(false);
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
         btnEditar.setText("Actualizar");
         btnEditar.setToolTipText("Actualizar registro con los nuevos datos");
         btnEditar.setNextFocusableComponent(btnEliminar);
+        btnEditar.setPreferredSize(new java.awt.Dimension(140, 30));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -239,13 +243,13 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
                             .addComponent(jLabel5)
-                            .addComponent(btnEditar))
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnEliminar)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar))
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cajaPApellido)
                             .addComponent(cajaNombre)
                             .addComponent(cajaidEmpleado)
@@ -298,9 +302,9 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
                     .addComponent(cajaTelefono))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnEditar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

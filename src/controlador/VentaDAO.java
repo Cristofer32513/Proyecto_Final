@@ -16,7 +16,7 @@ public class VentaDAO {
                 
         return resultado;
     }
-    
+        
     public boolean agregarTiene(int idProducto){
         boolean resultado;
         String sql="INSERT INTO Tiene(id_Producto) VALUES(?)";
