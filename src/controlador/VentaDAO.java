@@ -49,4 +49,16 @@ public class VentaDAO {
        
         return resultado;
     }
+    
+    public void generarGraficoVentas(){
+        conexion.abrirConexion();
+        conexion.ventasPorEmpleado();
+        conexion.cerrarConexion();
+    }
+    
+    public void generarGraficoCompras(){
+        conexion.abrirConexion();
+        conexion.comprasPorCliente();
+        conexion.cerrarConexion();
+    }
 }

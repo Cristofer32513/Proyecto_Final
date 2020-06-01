@@ -1,6 +1,8 @@
 package reportes;
 
 import conexionBD.Conexion;
+import controlador.ProductoDAO;
+import controlador.VentaDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -32,7 +34,10 @@ public class Reportes extends javax.swing.JPanel {
         btnVentas = new javax.swing.JButton();
         btnProductosExt = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnStock = new javax.swing.JButton();
+        btnVentasE = new javax.swing.JButton();
+        btnCompras = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
@@ -43,7 +48,7 @@ public class Reportes extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Reprotes y Graficas");
+        jLabel6.setText("Estadisticas");
         jLabel6.setPreferredSize(new java.awt.Dimension(130, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -133,9 +138,47 @@ public class Reportes extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GRAFICAS");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("REPORTES");
+        btnStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/graficas.png"))); // NOI18N
+        btnStock.setText("Stock productos");
+        btnStock.setToolTipText("Genera una grafica sobre el estock de los productos");
+        btnStock.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnStock.setPreferredSize(new java.awt.Dimension(175, 40));
+        btnStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStockActionPerformed(evt);
+            }
+        });
+
+        btnVentasE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnVentasE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/graficas.png"))); // NOI18N
+        btnVentasE.setText("Ventas por empleado");
+        btnVentasE.setToolTipText("Genera una grafica sobre la cantidad de ventas que realiza cada empleado");
+        btnVentasE.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVentasE.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        btnVentasE.setPreferredSize(new java.awt.Dimension(175, 40));
+        btnVentasE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasEActionPerformed(evt);
+            }
+        });
+
+        btnCompras.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/graficas.png"))); // NOI18N
+        btnCompras.setText("Compras por cliente");
+        btnCompras.setToolTipText("Genera una grafica sobre la cantidad de compras que realiza cada cliente");
+        btnCompras.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCompras.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        btnCompras.setPreferredSize(new java.awt.Dimension(175, 40));
+        btnCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprasActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("REPORTES");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,13 +201,15 @@ public class Reportes extends javax.swing.JPanel {
                         .addGap(115, 115, 115)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnStock, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116)
+                        .addComponent(btnVentasE, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,24 +217,26 @@ public class Reportes extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel3)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProductosExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addContainerGap(171, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(54, 54, 54)
-                    .addComponent(jLabel2)
-                    .addContainerGap(317, Short.MAX_VALUE)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVentasE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -295,15 +342,33 @@ public class Reportes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnVentasActionPerformed
 
+    private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
+        ProductoDAO prod = new ProductoDAO();
+        prod.generarGraficoStock();
+    }//GEN-LAST:event_btnStockActionPerformed
+
+    private void btnVentasEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasEActionPerformed
+        VentaDAO ventas = new VentaDAO();
+        ventas.generarGraficoVentas();
+    }//GEN-LAST:event_btnVentasEActionPerformed
+
+    private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
+        VentaDAO compras = new VentaDAO();
+        compras.generarGraficoCompras();
+    }//GEN-LAST:event_btnComprasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCategorias;
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnCompras;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProductosExt;
     private javax.swing.JButton btnProveedores;
+    private javax.swing.JButton btnStock;
     private javax.swing.JButton btnVentas;
+    private javax.swing.JButton btnVentasE;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

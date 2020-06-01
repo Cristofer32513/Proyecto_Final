@@ -61,4 +61,10 @@ public class ProductoDAO {
 
         return producto;
     }           
+    
+    public void generarGraficoStock(){
+        conexion.abrirConexion();
+        conexion.totalStock();
+        conexion.cerrarConexion();
+    }
 }

@@ -8,14 +8,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Cliente;
 import modelo.Empleado;
+import modelo.Prod;
 import modelo.Producto;
 import modelo.Proveedor;
 import modelo.Usuario;
 import modelo.Venta;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Conexion {
     public static Connection conexion;
@@ -338,5 +345,95 @@ public class Conexion {
             
             return ejecucion==1;
         } catch(SQLException e){return false;}
+    }
+    
+    public void totalStock() {
+        String sql = "SELECT Nombre, Stock FROM Productos ORDER BY Stock;";
+        ResultSet resset;
+        Prod prod = new Prod();
+        
+        JFreeChart grafica;
+        DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
+        
+        try {
+            stm = conexion.createStatement(); 
+            resset = stm.executeQuery(sql);
+            
+            while(resset.next()){
+                prod.setNombre(resset.getString(1));
+                prod.setStock(resset.getInt(2));
+                
+                dataSet.addValue(prod.getStock(), "Stock", prod.getNombre());                
+            }
+            
+            grafica = ChartFactory.createBarChart("Stock", "Productos", "Stock de Productos", dataSet, PlotOrientation.VERTICAL, true, true, false);
+            ChartPanel panel = new ChartPanel(grafica);
+            JFrame info = new JFrame("Grafica de Stock");
+            info.getContentPane().add(panel);
+            info.pack();
+            info.setLocationRelativeTo(null);
+            info.setVisible(true);
+                       
+        } catch (SQLException e) {}
+    }
+    
+    public void ventasPorEmpleado() {
+        String sql = "SELECT id_Empleado, COUNT(id_Empleado) AS ventas_e FROM ventas group by id_Empleado order by ventas_e;";
+        ResultSet resset;
+        Prod prod = new Prod();
+        
+        JFreeChart grafica;
+        DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
+        
+        try {
+            stm = conexion.createStatement(); 
+            resset = stm.executeQuery(sql);
+            
+            while(resset.next()){
+                prod.setNombre(resset.getString(1));
+                prod.setStock(resset.getInt(2));
+                
+                dataSet.addValue(prod.getStock(), "Ventas realizadas", prod.getNombre());                
+            }
+            
+            grafica = ChartFactory.createBarChart("Status de ventas", "Id de empleado", "Cantidad de ventas", dataSet, PlotOrientation.VERTICAL, true, true, false);
+            ChartPanel panel = new ChartPanel(grafica);
+            JFrame info = new JFrame("Grafica de ventas por usuario");
+            info.getContentPane().add(panel);
+            info.pack();
+            info.setLocationRelativeTo(null);
+            info.setVisible(true);
+                       
+        } catch (SQLException e) {}
+    }
+    
+    public void comprasPorCliente() {
+        String sql = "SELECT id_Cliente, COUNT(id_Cliente) AS compras FROM ventas group by id_Cliente order by compras;";
+        ResultSet resset;
+        Prod prod = new Prod();
+        
+        JFreeChart grafica;
+        DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
+        
+        try {
+            stm = conexion.createStatement(); 
+            resset = stm.executeQuery(sql);
+            
+            while(resset.next()){
+                prod.setNombre(resset.getString(1));
+                prod.setStock(resset.getInt(2));
+                
+                dataSet.addValue(prod.getStock(), "Compras realizadas", prod.getNombre());                
+            }
+            
+            grafica = ChartFactory.createBarChart("Status de ventas", "Id de cliente", "Cantidad de compras", dataSet, PlotOrientation.VERTICAL, true, true, false);
+            ChartPanel panel = new ChartPanel(grafica);
+            JFrame info = new JFrame("Grafica de compras por cliente");
+            info.getContentPane().add(panel);
+            info.pack();
+            info.setLocationRelativeTo(null);
+            info.setVisible(true);
+                       
+        } catch (SQLException e) {}
     }
 }
