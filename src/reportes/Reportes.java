@@ -245,7 +245,7 @@ public class Reportes extends javax.swing.JPanel {
         try {
             @SuppressWarnings("UnusedAssignment")
             JasperReport reporte = null;
-            String path = "src\\reportes\\ProductosExt.jasper";
+            String path = "src\\reportes\\ReporteProductosExt.jasper";
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             @SuppressWarnings("static-access")
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
@@ -262,7 +262,7 @@ public class Reportes extends javax.swing.JPanel {
         try {
             @SuppressWarnings("UnusedAssignment")
             JasperReport reporte = null;
-            String path = "src\\reportes\\Categorias.jasper";
+            String path = "src\\reportes\\ReporteCategorias.jasper";
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             @SuppressWarnings("static-access")
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
@@ -279,7 +279,7 @@ public class Reportes extends javax.swing.JPanel {
         try {
             @SuppressWarnings("UnusedAssignment")
             JasperReport reporte = null;
-            String path = "src\\reportes\\Proveedores.jasper";
+            String path = "src\\reportes\\ReporteProveedores.jasper";
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             @SuppressWarnings("static-access")
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
@@ -296,7 +296,7 @@ public class Reportes extends javax.swing.JPanel {
         try {
             @SuppressWarnings("UnusedAssignment")
             JasperReport reporte = null;
-            String path = "src\\reportes\\Productos.jasper";
+            String path = "src\\reportes\\ReporteProductos.jasper";
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             @SuppressWarnings("static-access")
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
@@ -313,7 +313,7 @@ public class Reportes extends javax.swing.JPanel {
         try {
             @SuppressWarnings("UnusedAssignment")
             JasperReport reporte = null;
-            String path = "src\\reportes\\Clientes.jasper";
+            String path = "src\\reportes\\ReporteClientes.jasper";
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             @SuppressWarnings("static-access")
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
@@ -330,7 +330,7 @@ public class Reportes extends javax.swing.JPanel {
         try {
             @SuppressWarnings("UnusedAssignment")
             JasperReport reporte = null;
-            String path = "src\\reportes\\Ventas.jasper";
+            String path = "src\\reportes\\ReporteVentas.jasper";
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             @SuppressWarnings("static-access")
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
