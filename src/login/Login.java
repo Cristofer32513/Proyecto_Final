@@ -3,7 +3,6 @@ package login;
 import controlador.UsuarioDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import modelo.ResultSetTableModel;
 import modelo.Usuario;
 
@@ -189,9 +188,9 @@ public class Login extends javax.swing.JPanel {
 
     private void buscar() {
         if(!cajaTexto.getText().equals(""))
-            actualizarTabla("SELECT * FROM Usuarios WHERE Usuario LIKE '%"+cajaTexto.getText()+"%'");
+            actualizarTabla("SELECT * FROM Usuarios WHERE Usuario LIKE '%"+cajaTexto.getText()+"%'  ORDER BY id_empleado");
         else
-            actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);;
+            actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
        
     private void sinCaracteresEspeciales(KeyEvent evt) {
@@ -201,8 +200,8 @@ public class Login extends javax.swing.JPanel {
     }
     
     private void actualizarTabla(String consulta){
-        String controlador = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+        String controlador = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Ferreteria";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -226,6 +225,6 @@ public class Login extends javax.swing.JPanel {
     private int id;
     private Usuario user = new Usuario();
     final static UsuarioDAO USUARIO_DAO = new UsuarioDAO();
-    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Usuarios";
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Usuarios ORDER BY id_empleado";
     private EditarLogin editar;
 }

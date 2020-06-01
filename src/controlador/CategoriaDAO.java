@@ -41,7 +41,7 @@ public class CategoriaDAO {
         return resultado;
     }
 	
-    public Categoria buscarCategoria(String idCategoria){
+    public Categoria buscarCategoria(int idCategoria){
         Categoria categoria = new Categoria();
         String sql = "SELECT * FROM Categorias WHERE id_Categoria = ?";
 

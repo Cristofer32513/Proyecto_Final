@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f682fac6-ffbc-45e9-903e-c7e12d0dc02a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -10,13 +13,19 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<queryString language="plsql">
 		<![CDATA[SELECT
      categorias.`id_Categoria` AS categorias_id_Categoria,
      categorias.`Nombre` AS categorias_Nombre,
-     categorias.`Descripcion` AS categorias_Descripcion
+     categorias.`Descripcion` AS categorias_Descripcion,
+     categorias."id_categoria" AS categorias_id_categoria,
+     categorias."nombre" AS categorias_nombre,
+     categorias."descripcion" AS categorias_descripcion,
+     categorias."id_categoria" AS categorias_id_categoria,
+     categorias."nombre" AS categorias_nombre,
+     categorias."descripcion" AS categorias_descripcion
 FROM
-     `categorias` categorias]]>
+     "public"."categorias" categorias]]>
 	</queryString>
 	<field name="categorias_id_Categoria" class="java.lang.Integer"/>
 	<field name="categorias_Nombre" class="java.lang.String"/>

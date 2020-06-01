@@ -362,43 +362,43 @@ public class Empleado extends javax.swing.JPanel {
     private void buscar(){
         if(radioNombre.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Empleados WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Empleados WHERE nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioPApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Empleados WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Empleados WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioSApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Empleados WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Empleados WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioCargo.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Empleados WHERE Cargo Like '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Empleados WHERE Cargo Like '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioCalle.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Empleados WHERE Calle LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Empleados WHERE Calle LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioColonia.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Empleados WHERE Colonia LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Empleados WHERE Colonia LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioMunicipio.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Empleados WHERE Municipio Like '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Empleados WHERE Municipio Like '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
@@ -504,8 +504,8 @@ public class Empleado extends javax.swing.JPanel {
     }
     
     private void actualizarTabla(String consulta){
-        String controlador = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+        String controlador = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Ferreteria";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -537,7 +537,7 @@ public class Empleado extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, pA, sA, car, call, col, mun, tel;
     private int id;
-    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Empleados";
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Empleados ORDER BY id_empleado";
     private AgregarEmpleado agregar;
     private EliminarOEditarEmpleado eliminar;
 }

@@ -41,7 +41,7 @@ public class ProductoDAO {
         return resultado;
     }
 	
-    public Producto buscarProducto(String idProducto){
+    public Producto buscarProducto(int idProducto){
         Producto producto = new Producto();
         String sql = "SELECT * FROM Productos WHERE id_Producto = ?";
 

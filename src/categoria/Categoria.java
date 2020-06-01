@@ -216,7 +216,7 @@ public class Categoria extends javax.swing.JPanel {
  
     private void buscar(){
         if(!cajaTexto.getText().equals(""))
-            actualizarTabla("SELECT * FROM Categorias WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
+            actualizarTabla("SELECT * FROM Categorias WHERE nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_categoria");
         else
             actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
     }
@@ -228,8 +228,8 @@ public class Categoria extends javax.swing.JPanel {
     }
         
     private void actualizarTabla(String consulta){
-        String controlador = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+        String controlador = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Ferreteria";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -254,7 +254,7 @@ public class Categoria extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, desc;
     private int id;
-    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Categorias";
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Categorias ORDER BY id_categoria";
     AgregarCategoria agregar;
     EliminarOEditarCategoria eliminarOEditar;
 }

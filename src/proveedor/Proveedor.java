@@ -278,19 +278,19 @@ public class Proveedor extends javax.swing.JPanel {
     public void buscar(){
         if(radioNombre.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Proveedores WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Proveedores WHERE nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioPApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Proveedores WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Proveedores WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioSApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Proveedores WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Proveedores WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
@@ -345,8 +345,8 @@ public class Proveedor extends javax.swing.JPanel {
     }
       
     private void actualizarTabla(String consulta){
-        String controlador = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+        String controlador = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Ferreteria";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -374,7 +374,7 @@ public class Proveedor extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, pA, sA, tel;
     private int id;
-    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Proveedores";
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Proveedores ORDER BY id_proveedor";
     private AgregarProveedor agregar;
     private EliminarOEditarProveedor eliminar;
 }

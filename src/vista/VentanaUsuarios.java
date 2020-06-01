@@ -2,21 +2,10 @@ package vista;
 
 import categoria.Categoria;
 import cliente.Cliente;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
-import conexionBD.Conexion;
 import java.awt.BorderLayout;
 import venta.Venta;
-import producto.ReporteProductos;
 import producto.Producto;
 import proveedor.Proveedor;
 import reportes.Reportes;
@@ -329,6 +318,5 @@ public class VentanaUsuarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
-    private ReporteProductos describir;
     private int id;
 }

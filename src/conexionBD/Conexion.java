@@ -1,13 +1,14 @@
 package conexionBD;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
@@ -27,8 +28,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class Conexion {
     public static Connection conexion;
     private PreparedStatement pstm;
-    private final static String DRIVER="com.mysql.cj.jdbc.Driver";
-    private final static String URL="jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+    private final static String DRIVER="org.postgresql.Driver";
+    private final static String URL="jdbc:postgresql://localhost:5432/Ferreteria";
     ResultSet rs=null;
     private static Conexion conexionB;
     Statement stm;
@@ -47,7 +48,7 @@ public class Conexion {
     public final void abrirConexion() {
         try {
             Class.forName(DRIVER);
-            conexion = DriverManager.getConnection(URL, "Cristofer", "casas");			
+            conexion = DriverManager.getConnection(URL, "Cristofer", "casas");
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "No se encontro el controlador.\n" + e.getMessage(), "Error de conexion", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
@@ -64,7 +65,7 @@ public class Conexion {
     
     public boolean ejecutarAlta(String sql, Usuario usuario) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setInt(1, usuario.getIdEmpleado());
             pstm.setString(2, usuario.getUsuario());
             pstm.setString(3, usuario.getContraseña());
@@ -77,7 +78,7 @@ public class Conexion {
     
     public boolean ejecutarBaja(String sql, int id) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setInt(1, id);
             int ejecucion;
             ejecucion=pstm.executeUpdate();
@@ -88,7 +89,7 @@ public class Conexion {
 	
     public boolean ejecutarModificacion(String sql, Usuario usuario) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, usuario.getUsuario());
             pstm.setString(2, usuario.getContraseña());
             pstm.setInt(3, usuario.getIdEmpleado());
@@ -101,7 +102,7 @@ public class Conexion {
     
     public ResultSet ejecutarConsultaUsuarios(String sql, String usuario, String contraseña) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, usuario);
             pstm.setString(2, contraseña);
             rs=pstm.executeQuery();
@@ -113,7 +114,7 @@ public class Conexion {
     
     public ResultSet ejecutarConsultaUsuarios(String sql, int idEmpleado) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setInt(1, idEmpleado);
             rs=pstm.executeQuery();
         } catch(SQLException e) {}
@@ -123,7 +124,7 @@ public class Conexion {
     
     public boolean ejecutarAlta(String sql, Categoria categoria) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, categoria.getNombre());
             pstm.setString(2, categoria.getDescripcion());
             int ejecucion;
@@ -135,7 +136,7 @@ public class Conexion {
 	
     public boolean ejecutarModificacion(String sql, Categoria categoria) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, categoria.getNombre());
             pstm.setString(2, categoria.getDescripcion());
             pstm.setInt(3, categoria.getIdCategoria());
@@ -146,10 +147,10 @@ public class Conexion {
         } catch(SQLException e){return false;}
     }
     
-    public ResultSet ejecutarConsultaID(String sql, String id) {
+    public ResultSet ejecutarConsultaID(String sql, int id) {
         try {
-            pstm=conexion.prepareStatement(sql);
-            pstm.setString(1, id);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            pstm.setInt(1, id);
             rs=pstm.executeQuery();
         } catch(SQLException e) {}
         
@@ -158,7 +159,7 @@ public class Conexion {
     
     public boolean ejecutarAlta(String sql, Cliente cliente) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, cliente.getNombre());
             pstm.setString(2, cliente.getPrimerApellido());
             pstm.setString(3, cliente.getSegundoApellido());
@@ -175,7 +176,7 @@ public class Conexion {
     
     public boolean ejecutarModificacion(String sql, Cliente cliente) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, cliente.getNombre());
             pstm.setString(2, cliente.getPrimerApellido());
             pstm.setString(3, cliente.getSegundoApellido());
@@ -193,7 +194,7 @@ public class Conexion {
     
     public boolean ejecutarAlta(String sql, Empleado empleado) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, empleado.getNombre());
             pstm.setString(2, empleado.getPrimerApellido());
             pstm.setString(3, empleado.getSegundoApellido());
@@ -211,7 +212,7 @@ public class Conexion {
     
     public boolean ejecutarModificacion(String sql, Empleado empleado) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, empleado.getNombre());
             pstm.setString(2, empleado.getPrimerApellido());
             pstm.setString(3, empleado.getSegundoApellido());
@@ -230,7 +231,7 @@ public class Conexion {
     
     public ResultSet ejecutarConsultaID(String sql, String nombre, String primerAp, String segundoAp, String cargo, String calle, String colonia, String municipio, String telefono) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, nombre);
             pstm.setString(2, primerAp);
             pstm.setString(3, segundoAp);
@@ -249,7 +250,7 @@ public class Conexion {
     
     public boolean ejecutarAlta(String sql, Proveedor proveedor) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, proveedor.getNombre());
             pstm.setString(2, proveedor.getPrimerApellido());
             pstm.setString(3, proveedor.getSegundoApellido());
@@ -263,7 +264,7 @@ public class Conexion {
 	
     public boolean ejecutarModificacion(String sql, Proveedor proveedor) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, proveedor.getNombre());
             pstm.setString(2, proveedor.getPrimerApellido());
             pstm.setString(3, proveedor.getSegundoApellido());
@@ -278,7 +279,7 @@ public class Conexion {
     
     public boolean ejecutarAlta(String sql, Producto producto) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, producto.getNombre());
             pstm.setString(2, producto.getMarca());
             pstm.setDouble(3, producto.getPrecio());
@@ -291,10 +292,10 @@ public class Conexion {
             return ejecucion==1;
         } catch(SQLException e){return false;}
     }
-	
+      
     public boolean ejecutarModificacion(String sql, Producto producto) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setString(1, producto.getNombre());
             pstm.setString(2, producto.getMarca());
             pstm.setDouble(3, producto.getPrecio());
@@ -309,9 +310,9 @@ public class Conexion {
         } catch(SQLException e){return false;}
     }
     
-    public boolean ejecutarAlta(String sql, Venta venta) {
+    public boolean ejecutarAlta(String sql, Venta venta) throws ParseException {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             conexion.setAutoCommit(false);
             pstm.setInt(1, venta.getIdEmpleado());
             pstm.setInt(2, venta.getIdCliente());
@@ -319,7 +320,11 @@ public class Conexion {
             pstm.setInt(4, venta.getIdProducto());
             pstm.setString(5, venta.getNombreProducto());
             pstm.setInt(6, venta.getCantidad());
-            pstm.setString(7, venta.getFecha());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date parsed = format.parse(venta.getFecha());
+            Date aba = new java.sql.Date(parsed.getTime());
+            pstm.setDate(7, aba);
+
             
             int ejecucion;
             ejecucion=pstm.executeUpdate();
@@ -337,7 +342,7 @@ public class Conexion {
     
     public boolean ejecutarAlta(String sql, int campo1) {
         try {
-            pstm=conexion.prepareStatement(sql);
+            pstm=conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstm.setInt(1, campo1);
                         
             int ejecucion;

@@ -1,12 +1,13 @@
 package controlador;
 
 import conexionBD.Conexion;
+import java.text.ParseException;
 import modelo.Venta;
 
 public class VentaDAO {
     Conexion conexion = Conexion.getConexion();
     
-    public boolean agregarVenta(Venta venta){
+    public boolean agregarVenta(Venta venta) throws ParseException{
         boolean resultado;
         String sql="INSERT INTO Ventas(id_Empleado, id_Cliente, Nombre_Cliente, id_Producto, Nombre_Producto, Cantidad, Fecha) VALUES (?, ?, ?, ?, ?, ?, ?)";
 

@@ -41,7 +41,7 @@ public class ClienteDAO {
         return resultado;
     }
 	
-    public Cliente buscarCliente(String idCliente){
+    public Cliente buscarCliente(int idCliente){
         Cliente cliente = new Cliente();
         String sql = "SELECT * FROM Clientes WHERE id_Cliente = ?";
 

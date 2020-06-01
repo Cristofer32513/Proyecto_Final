@@ -41,7 +41,7 @@ public class ProveedorDAO {
         return resultado;
     }
 	
-    public Proveedor buscarProveedor(String idProveedor){
+    public Proveedor buscarProveedor(int idProveedor){
         Proveedor proveedor = new Proveedor();
         String sql = "SELECT * FROM Proveedores WHERE id_Proveedor = ?";
 

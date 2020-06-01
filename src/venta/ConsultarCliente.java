@@ -391,37 +391,37 @@ public class ConsultarCliente extends javax.swing.JDialog {
     private void buscar(){
         if(radioNombre.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Clientes WHERE nombre LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Clientes WHERE nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_cliente");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioPApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Clientes WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Clientes WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_cliente");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioSApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Clientes WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Clientes WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_cliente");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioCalle.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Clientes WHERE Calle LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Clientes WHERE Calle LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_cliente");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioColonia.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Clientes WHERE Colonia LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Clientes WHERE Colonia LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_cliente");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioMunicipio.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Clientes WHERE Municipio LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Clientes WHERE Municipio LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_cliente");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
@@ -433,9 +433,9 @@ public class ConsultarCliente extends javax.swing.JDialog {
             evt.consume();
     }
     
-    private final void actualizarTabla(String consulta){
-        String controlador = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+    private void actualizarTabla(String consulta){
+        String controlador = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Ferreteria";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -465,5 +465,5 @@ public class ConsultarCliente extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     public int id;
     public String nombre;
-    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Clientes";
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Clientes ORDER BY id_cliente";
 }

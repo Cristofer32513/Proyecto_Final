@@ -301,25 +301,25 @@ public class Producto extends javax.swing.JPanel {
     public void buscar(){
         if(radioNombre.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Productos WHERE Nombre LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Productos WHERE Nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_producto");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioMarca.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Productos WHERE Marca LIKE '%"+cajaTexto.getText()+"%'");
+                actualizarTabla("SELECT * FROM Productos WHERE Marca LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_producto");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioProveedor.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Productos WHERE id_Proveedor = '"+cajaTexto.getText()+"'");
+                actualizarTabla("SELECT * FROM Productos WHERE id_Proveedor = '"+cajaTexto.getText()+"' ORDER BY id_producto");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioCategoria.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Productos WHERE id_Categoria = '"+cajaTexto.getText()+"'");
+                actualizarTabla("SELECT * FROM Productos WHERE id_Categoria = '"+cajaTexto.getText()+"' ORDER BY id_producto");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
@@ -392,8 +392,8 @@ public class Producto extends javax.swing.JPanel {
     }
     
     private void actualizarTabla(String consulta){
-        String controlador = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+        String controlador = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Ferreteria";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -422,7 +422,7 @@ public class Producto extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String nom, mar, pre, sto;
     private int id, idProv, idCat;
-    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Productos";
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Productos ORDER BY id_producto";
     private AgregarProducto agregar;
     private EliminarOEditarProducto eliminar;
 }

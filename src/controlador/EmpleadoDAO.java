@@ -41,7 +41,7 @@ public class EmpleadoDAO {
         return resultado;
     }
 	
-    public Empleado buscarEmpleado(String idEmpleado){
+    public Empleado buscarEmpleado(int idEmpleado){
         Empleado empleado = new Empleado();
         String sql = "SELECT * FROM Empleados WHERE id_Empleado = ?";
 

@@ -2,6 +2,9 @@ package venta;
 
 import controlador.ProductoDAO;
 import controlador.VentaDAO;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Producto;
 import modelo.Venta;
@@ -210,14 +213,16 @@ public class AgregarVenta extends javax.swing.JDialog {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if(verificarEstadoComponentes()){
-            venta = new Venta(id, idEmp, Integer.parseInt(cajaidCliente.getText()), cajaNombreCliente.getText(), Integer.parseInt(cajaIdProducto.getText()), cajanombreProducto.getText(), (int)spinnerCantidad.getValue());
-            if(VENTA_DAO.agregarVenta(venta)){
-                VENTA_DAO.agregarTiene(venta.getIdProducto());
-                VENTA_DAO.agregarEfectua(venta.getIdEmpleado());
-                VENTA_DAO.agregarRealiza(venta.getIdCliente());
-                this.dispose();
-            } else
-                JOptionPane.showMessageDialog(null, "Error al registrar la Venta.", "Error", JOptionPane.ERROR_MESSAGE);
+            try {
+                venta = new Venta(id, idEmp, Integer.parseInt(cajaidCliente.getText()), cajaNombreCliente.getText(), Integer.parseInt(cajaIdProducto.getText()), cajanombreProducto.getText(), (int)spinnerCantidad.getValue());
+                if(VENTA_DAO.agregarVenta(venta)){
+                    VENTA_DAO.agregarTiene(venta.getIdProducto());
+                    VENTA_DAO.agregarEfectua(venta.getIdEmpleado());
+                    VENTA_DAO.agregarRealiza(venta.getIdCliente());
+                    this.dispose();
+                } else
+                    JOptionPane.showMessageDialog(null, "Error al registrar la Venta.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (ParseException ex) {}
         }
         else
             JOptionPane.showMessageDialog(null, "Campo(s) vacio(s).", "Precaucion", JOptionPane.WARNING_MESSAGE);
@@ -234,7 +239,7 @@ public class AgregarVenta extends javax.swing.JDialog {
         cajaIdProducto.setText(String.valueOf(consultar.id));
         cajanombreProducto.setText(consultar.nombre);
         Producto prod;
-        prod = PRODUCTODAO.buscarProducto(cajaIdProducto.getText());
+        prod = PRODUCTODAO.buscarProducto(Integer.parseInt(cajaIdProducto.getText()));
         spinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, prod.getStock(), 1));
         consultar.dispose();
     }//GEN-LAST:event_btnBuscarProductoActionPerformed

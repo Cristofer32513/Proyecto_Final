@@ -431,24 +431,24 @@
                 <StringItem index="1" value="Apozol"/>
                 <StringItem index="2" value="Apulco"/>
                 <StringItem index="3" value="Atolinga"/>
-                <StringItem index="4" value="Benito Ju&#xe1;rez"/>
+                <StringItem index="4" value="Benito Juarez"/>
                 <StringItem index="5" value="Calera"/>
-                <StringItem index="6" value="Ca&#xf1;itas de Felipe Pescador"/>
+                <StringItem index="6" value="Canitas de Felipe Pescador"/>
                 <StringItem index="7" value="Chalchihuites"/>
                 <StringItem index="8" value="Concepci&#xf3;n del Oro"/>
-                <StringItem index="9" value="Cuauht&#xe9;moc"/>
-                <StringItem index="10" value="El Plateado de Joaqu&#xed;n Amaro"/>
+                <StringItem index="9" value="Cuauhtemoc"/>
+                <StringItem index="10" value="El Plateado de Joaquin Amaro"/>
                 <StringItem index="11" value="El Salvador"/>
                 <StringItem index="12" value="Fresnillo"/>
                 <StringItem index="13" value="Genaro Codina"/>
                 <StringItem index="14" value="General Enrique Estrada"/>
-                <StringItem index="15" value="General Francisco R. Murgu&#xed;a"/>
-                <StringItem index="16" value="General P&#xe1;nfilo Natera"/>
+                <StringItem index="15" value="General Francisco R. Murguia"/>
+                <StringItem index="16" value="General Panfilo Natera"/>
                 <StringItem index="17" value="Guadalupe"/>
                 <StringItem index="18" value="Huanusco"/>
                 <StringItem index="19" value="Jalpa"/>
                 <StringItem index="20" value="Jerez"/>
-                <StringItem index="21" value="Jim&#xe9;nez del Teul"/>
+                <StringItem index="21" value="Jimenez del Teul"/>
                 <StringItem index="22" value="Juan Aldama"/>
                 <StringItem index="23" value="Juchipila"/>
                 <StringItem index="24" value="Loreto"/>
@@ -461,29 +461,29 @@
                 <StringItem index="31" value="Monte Escobedo"/>
                 <StringItem index="32" value="Morelos"/>
                 <StringItem index="33" value="Moyahua de Estrada"/>
-                <StringItem index="34" value="Nochistl&#xe1;n de Mej&#xed;a"/>
-                <StringItem index="35" value="Noria de &#xc1;ngeles"/>
+                <StringItem index="34" value="Nochistlan de Mejia"/>
+                <StringItem index="35" value="Noria de Angeles"/>
                 <StringItem index="36" value="Ojocaliente"/>
-                <StringItem index="37" value="P&#xe1;nuco"/>
+                <StringItem index="37" value="Panuco"/>
                 <StringItem index="38" value="Pinos"/>
-                <StringItem index="39" value="R&#xed;o Grande"/>
-                <StringItem index="40" value="Sa&#xed;n Alto"/>
-                <StringItem index="41" value="Santa Mar&#xed;a de la Paz"/>
+                <StringItem index="39" value="Rio Grande"/>
+                <StringItem index="40" value="Sain Alto"/>
+                <StringItem index="41" value="Santa Maria de la Paz"/>
                 <StringItem index="42" value="Sombrerete"/>
-                <StringItem index="43" value="Susticac&#xe1;n"/>
+                <StringItem index="43" value="Susticacan"/>
                 <StringItem index="44" value="Tabasco"/>
-                <StringItem index="45" value="Tepechitl&#xe1;n"/>
+                <StringItem index="45" value="Tepechitlan"/>
                 <StringItem index="46" value="Tepetongo"/>
-                <StringItem index="47" value="Te&#xfa;l de Gonz&#xe1;lez Ortega"/>
-                <StringItem index="48" value="Tlaltenango de S&#xe1;nchez Rom&#xe1;n"/>
+                <StringItem index="47" value="Teul de Gonzalez Ortega"/>
+                <StringItem index="48" value="Tlaltenango de Sanchez Roman"/>
                 <StringItem index="49" value="Trancoso"/>
-                <StringItem index="50" value="Trinidad Garc&#xed;a de la Cadena"/>
-                <StringItem index="51" value="Valpara&#xed;so"/>
+                <StringItem index="50" value="Trinidad Garcia de la Cadena"/>
+                <StringItem index="51" value="Valparaiso"/>
                 <StringItem index="52" value="Vetagrande"/>
                 <StringItem index="53" value="Villa de Cos"/>
-                <StringItem index="54" value="Villa Garc&#xed;a"/>
-                <StringItem index="55" value="Villa Gonz&#xe1;lez Ortega"/>
-                <StringItem index="56" value="Villa Hidalgo "/>
+                <StringItem index="54" value="Villa Garcia"/>
+                <StringItem index="55" value="Villa Gonzalez Ortega"/>
+                <StringItem index="56" value="Villa Hidalgo"/>
                 <StringItem index="57" value="Villanueva"/>
                 <StringItem index="58" value="Zacatecas"/>
               </StringArray>

@@ -10,7 +10,7 @@ public class UsuarioDAO {
     
     public boolean agregarUsuario(Usuario usuario){
         boolean resultado;
-        String sql="INSERT INTO Usuarios(id_Empleado, Usuario, Contraseña) VALUES (?, ?, ?)";
+        String sql="INSERT INTO Usuarios(id_Empleado, Usuario, password) VALUES (?, ?, ?)";
 
         conexion.abrirConexion();
         resultado = conexion.ejecutarAlta(sql, usuario);
@@ -32,7 +32,7 @@ public class UsuarioDAO {
 	
     public boolean modificarUsuario(Usuario usuario){
         boolean resultado;
-        String sql="UPDATE Usuarios SET Usuario = ?, Contraseña = ? WHERE id_Empleado = ?";
+        String sql="UPDATE Usuarios SET Usuario = ?, Password = ? WHERE id_Empleado = ?";
 
         conexion.abrirConexion();
         resultado = conexion.ejecutarModificacion(sql, usuario);
@@ -43,7 +43,7 @@ public class UsuarioDAO {
 	
     public Usuario buscarUsuario(String usuario, String contraseña){
         Usuario usua = new Usuario ();
-        String sql="SELECT * FROM Usuarios WHERE Usuario = ? AND Contraseña = ?";
+        String sql="SELECT * FROM Usuarios WHERE Usuario = ? AND Password = ?";
 
         conexion.abrirConexion();
         ResultSet resultado=conexion.ejecutarConsultaUsuarios(sql, usuario, contraseña);
@@ -54,7 +54,6 @@ public class UsuarioDAO {
                 usua.setContraseña(resultado.getString(3));
         } catch (SQLException e) {return null;}
         finally {conexion.cerrarConexion();}
-
         return usua;
     }
     

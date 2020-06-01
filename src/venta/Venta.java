@@ -265,13 +265,13 @@ public class Venta extends javax.swing.JPanel {
     public void buscar(){
         if(radioIdCliente.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Ventas WHERE id_Cliente = '"+cajaTexto.getText()+"'");
+                actualizarTabla("SELECT * FROM Ventas WHERE id_Cliente = '"+cajaTexto.getText()+"' ORDER BY id_venta");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
         else if(radioIdProducto.isSelected()){
             if(!cajaTexto.getText().equals(""))
-                actualizarTabla("SELECT * FROM Ventas WHERE id_Producto = '"+cajaTexto.getText()+"'");
+                actualizarTabla("SELECT * FROM Ventas WHERE id_Producto = '"+cajaTexto.getText()+"' ORDER BY id_venta");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         }
@@ -303,8 +303,8 @@ public class Venta extends javax.swing.JPanel {
     }
     
     private void actualizarTabla(String consulta){
-        String controlador = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost/Ferreteria?useTimezone=true&serverTimezone=UTC";
+        String controlador = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Ferreteria";
         ResultSetTableModel modeloDatos = null;
 
         try {
@@ -331,6 +331,6 @@ public class Venta extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private int idEmple;
     final static VentaDAO VENTA_DAO = new VentaDAO();
-    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Ventas";
+    final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Ventas ORDER BY id_venta";
     private AgregarVenta agregar;
 }
