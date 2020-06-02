@@ -254,17 +254,17 @@ public class EliminarOEditarProveedor extends javax.swing.JDialog {
 
     private void cajaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
     private void cajaPApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaPApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaPApellidoKeyPressed
 
     private void cajaSApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaSApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaSApellidoKeyPressed
 
     private void cajaTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaTelefonoKeyPressed

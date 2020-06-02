@@ -243,8 +243,6 @@ public class ConsultarProveedor extends javax.swing.JDialog {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
         grupo.clearSelection();
-        id = 0;
-        cajaTexto.setText("");
         cajaTexto.setToolTipText("Buscar");
         habilitarCampos(false, false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
@@ -255,14 +253,12 @@ public class ConsultarProveedor extends javax.swing.JDialog {
                 actualizarTabla("SELECT * FROM Proveedores WHERE nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioPApellido.isSelected()){
+        } else if(radioPApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Proveedores WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioSApellido.isSelected()){
+        } else if(radioSApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Proveedores WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
@@ -335,6 +331,6 @@ public class ConsultarProveedor extends javax.swing.JDialog {
     private javax.swing.JRadioButton radioSApellido;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
-    public int id;
+    public int id = 0;
     final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Proveedores ORDER BY id_proveedor";
 }

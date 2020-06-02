@@ -365,38 +365,32 @@ public class Empleado extends javax.swing.JPanel {
                 actualizarTabla("SELECT * FROM Empleados WHERE nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioPApellido.isSelected()){
+        } else if(radioPApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Empleados WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioSApellido.isSelected()){
+        } else if(radioSApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Empleados WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioCargo.isSelected()){
+        } else if(radioCargo.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Empleados WHERE Cargo Like '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioCalle.isSelected()){
+        } else if(radioCalle.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Empleados WHERE Calle LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioColonia.isSelected()){
+        } else if(radioColonia.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Empleados WHERE Colonia LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioMunicipio.isSelected()){
+        } else if(radioMunicipio.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Empleados WHERE Municipio Like '%"+cajaTexto.getText()+"%' ORDER BY id_empleado");
             else

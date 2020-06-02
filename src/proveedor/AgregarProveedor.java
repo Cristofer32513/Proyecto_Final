@@ -193,7 +193,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
 
     private void cajaPApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaPApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaPApellidoKeyPressed
 
     private void cajaPApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaPApellidoKeyTyped
@@ -205,7 +205,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
 
     private void cajaSApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaSApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaSApellidoKeyPressed
 
     private void cajaSApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaSApellidoKeyTyped
@@ -246,7 +246,7 @@ public class AgregarProveedor extends javax.swing.JDialog {
 
     private void cajaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyPressed
         if(evt.getKeyCode() == 10 )
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
     private void cajaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyTyped

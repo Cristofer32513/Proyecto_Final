@@ -145,7 +145,7 @@ public class AgregarLogin extends javax.swing.JDialog {
 
     private void cajaUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaUsuarioKeyPressed
         if(evt.getKeyCode() == 10 )
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaUsuarioKeyPressed
 
     private void cajaPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaPasswordKeyPressed

@@ -221,7 +221,8 @@ public class Venta extends javax.swing.JPanel {
         habilitarCampos(true, true);
         ConsultarCliente consultar = new ConsultarCliente(null, true);
         consultar.setVisible(true);
-        cajaTexto.setText(String.valueOf(consultar.id));
+        if(consultar.id != 0)
+            cajaTexto.setText(String.valueOf(consultar.id));
         consultar.dispose();
         buscar();
     }//GEN-LAST:event_radioIdClienteActionPerformed
@@ -231,7 +232,8 @@ public class Venta extends javax.swing.JPanel {
         habilitarCampos(true, true);
         ConsultarProducto consultar = new ConsultarProducto(null, true);
         consultar.setVisible(true);
-        cajaTexto.setText(String.valueOf(consultar.id));
+        if(consultar.id != 0)
+            cajaTexto.setText(String.valueOf(consultar.id));
         consultar.dispose();
         buscar();
     }//GEN-LAST:event_radioIdProductoActionPerformed
@@ -268,8 +270,7 @@ public class Venta extends javax.swing.JPanel {
                 actualizarTabla("SELECT * FROM Ventas WHERE id_Cliente = '"+cajaTexto.getText()+"' ORDER BY id_venta");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioIdProducto.isSelected()){
+        } else if(radioIdProducto.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Ventas WHERE id_Producto = '"+cajaTexto.getText()+"' ORDER BY id_venta");
             else

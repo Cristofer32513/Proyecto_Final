@@ -255,14 +255,12 @@ public class ConsultarProveedor extends javax.swing.JDialog {
                 actualizarTabla("SELECT * FROM Proveedores WHERE nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioPApellido.isSelected()){
+        } else if(radioPApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Proveedores WHERE Primer_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioSApellido.isSelected()){
+        } else if(radioSApellido.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Proveedores WHERE Segundo_Apellido LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_proveedor");
             else

@@ -3,8 +3,6 @@ package venta;
 import controlador.ProductoDAO;
 import controlador.VentaDAO;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Producto;
 import modelo.Venta;
@@ -236,19 +234,23 @@ public class AgregarVenta extends javax.swing.JDialog {
     private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
         ConsultarProducto consultar = new ConsultarProducto(null, true);
         consultar.setVisible(true);
-        cajaIdProducto.setText(String.valueOf(consultar.id));
-        cajanombreProducto.setText(consultar.nombre);
-        Producto prod;
-        prod = PRODUCTODAO.buscarProducto(Integer.parseInt(cajaIdProducto.getText()));
-        spinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, prod.getStock(), 1));
+        if(consultar.id != 0){
+            cajaIdProducto.setText(String.valueOf(consultar.id));
+            cajanombreProducto.setText(consultar.nombre);
+            Producto prod;
+            prod = PRODUCTODAO.buscarProducto(Integer.parseInt(cajaIdProducto.getText()));
+            spinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, prod.getStock(), 1));
+        }
         consultar.dispose();
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         ConsultarCliente consultar = new ConsultarCliente(null, true);
         consultar.setVisible(true);
-        cajaidCliente.setText(String.valueOf(consultar.id));
-        cajaNombreCliente.setText(consultar.nombre);
+        if(consultar.id != 0){
+            cajaidCliente.setText(String.valueOf(consultar.id));
+            cajaNombreCliente.setText(consultar.nombre);
+        } 
         consultar.dispose();
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 

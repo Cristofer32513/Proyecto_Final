@@ -27,6 +27,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         bienvenido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ferreteria");
         setMinimumSize(new java.awt.Dimension(971, 400));
         setResizable(false);
 
@@ -36,6 +37,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         btnEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empleados.png"))); // NOI18N
         btnEmpleados.setText("EMPLEADOS");
+        btnEmpleados.setToolTipText("Mostrar empleados");
         btnEmpleados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnEmpleados.setPreferredSize(new java.awt.Dimension(115, 35));
         btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +50,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         btnUsuarios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png"))); // NOI18N
         btnUsuarios.setText("USUARIOS");
+        btnUsuarios.setToolTipText("Mostrar usuarios");
         btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnUsuarios.setPreferredSize(new java.awt.Dimension(115, 35));
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +68,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         btnInicio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inicio.png"))); // NOI18N
         btnInicio.setText("INICIO");
+        btnInicio.setToolTipText("Mostrar inicio");
         btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInicio.setPreferredSize(new java.awt.Dimension(115, 35));
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +81,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         btnVentas1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnVentas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         btnVentas1.setText("SALIR");
+        btnVentas1.setToolTipText("Salir del programa");
         btnVentas1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnVentas1.setPreferredSize(new java.awt.Dimension(115, 35));
         btnVentas1.addActionListener(new java.awt.event.ActionListener() {

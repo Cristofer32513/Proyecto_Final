@@ -36,6 +36,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
         bienvenido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ferreteria");
         setMaximumSize(new java.awt.Dimension(971, 400));
         setMinimumSize(new java.awt.Dimension(971, 400));
         setResizable(false);

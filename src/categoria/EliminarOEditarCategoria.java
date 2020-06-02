@@ -232,7 +232,7 @@ public class EliminarOEditarCategoria extends javax.swing.JDialog {
 
     private void cajaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
     private void soloLetras(KeyEvent evt) {

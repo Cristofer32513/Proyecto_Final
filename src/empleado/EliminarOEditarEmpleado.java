@@ -348,37 +348,37 @@ public class EliminarOEditarEmpleado extends javax.swing.JDialog {
 
     private void cajaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
     private void cajaPApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaPApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaPApellidoKeyPressed
 
     private void cajaSApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaSApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaSApellidoKeyPressed
 
     private void comboCargoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboCargoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_comboCargoKeyPressed
 
     private void cajaCalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaCalleKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaCalleKeyPressed
 
     private void cajaColoniaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaColoniaKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaColoniaKeyPressed
 
     private void comboMunicipioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboMunicipioKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_comboMunicipioKeyPressed
 
     private void cajaTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaTelefonoKeyPressed

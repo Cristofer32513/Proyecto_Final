@@ -162,7 +162,7 @@ public class EditarLogin extends javax.swing.JDialog {
 
     private void cajaUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaUsuarioKeyPressed
         if(evt.getKeyCode() == 10)
-            btnGuardar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaUsuarioKeyPressed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

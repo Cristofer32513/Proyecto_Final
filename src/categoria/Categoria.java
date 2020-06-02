@@ -26,6 +26,7 @@ public class Categoria extends javax.swing.JPanel {
         tabla = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
         setPreferredSize(new java.awt.Dimension(800, 400));

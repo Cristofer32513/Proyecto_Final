@@ -296,7 +296,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
     private void cajaPApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaPApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaPApellidoKeyPressed
 
     private void cajaPApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaPApellidoKeyTyped
@@ -308,7 +308,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
     private void cajaSApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaSApellidoKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaSApellidoKeyPressed
 
     private void cajaSApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaSApellidoKeyTyped
@@ -354,7 +354,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
     private void cajaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyPressed
         if(evt.getKeyCode() == 10 )
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
     private void cajaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyTyped
@@ -366,7 +366,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
     private void cajaCalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaCalleKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaCalleKeyPressed
 
     private void cajaCalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaCalleKeyTyped
@@ -378,7 +378,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
     private void cajaColoniaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaColoniaKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaColoniaKeyPressed
 
     private void cajaColoniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaColoniaKeyTyped
@@ -390,7 +390,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
     private void comboMunicipioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboMunicipioKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_comboMunicipioKeyPressed
 
     private void soloLetras(KeyEvent evt) {

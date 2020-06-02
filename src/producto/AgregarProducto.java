@@ -238,7 +238,7 @@ public class AgregarProducto extends javax.swing.JDialog {
 
     private void cajaMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaMarcaKeyPressed
         if(evt.getKeyCode() == 10)
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaMarcaKeyPressed
 
     private void cajaMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaMarcaKeyTyped
@@ -267,7 +267,7 @@ public class AgregarProducto extends javax.swing.JDialog {
 
     private void cajaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyPressed
         if(evt.getKeyCode() == 10 )
-            btnAgregar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
     private void cajaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyTyped
@@ -280,14 +280,16 @@ public class AgregarProducto extends javax.swing.JDialog {
     private void btnBuscarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCategoriaActionPerformed
         ConsultarCategoria consultar = new ConsultarCategoria(null, true);
         consultar.setVisible(true);
-        cajaIdCategoria.setText(String.valueOf(consultar.id));
+        if(consultar.id != 0)
+            cajaIdCategoria.setText(String.valueOf(consultar.id));   
         consultar.dispose();
     }//GEN-LAST:event_btnBuscarCategoriaActionPerformed
 
     private void btnBuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProveedorActionPerformed
         ConsultarProveedor consultar = new ConsultarProveedor(null, true);
         consultar.setVisible(true);
-        cajaIdProveedor.setText(String.valueOf(consultar.id));
+        if(consultar.id != 0)
+            cajaIdProveedor.setText(String.valueOf(consultar.id));
         consultar.dispose();
     }//GEN-LAST:event_btnBuscarProveedorActionPerformed
 

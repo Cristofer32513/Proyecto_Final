@@ -287,9 +287,9 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         if(PRODUCTO_DAO.eliminarProducto(Integer.parseInt(cajaIdProducto.getText())))
-                this.dispose();
-            else
-                JOptionPane.showMessageDialog(null, "Error al eliminar el Producto.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.dispose();
+        else
+            JOptionPane.showMessageDialog(null, "Error al eliminar el Producto.", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -318,22 +318,22 @@ public class EliminarOEditarProducto extends javax.swing.JDialog {
 
     private void cajaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaNombreKeyPressed
 
     private void cajaMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaMarcaKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_cajaMarcaKeyPressed
 
     private void spinnerPrecioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spinnerPrecioKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_spinnerPrecioKeyPressed
 
     private void spinnerStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spinnerStockKeyPressed
         if(evt.getKeyCode() == 10)
-            btnEditar.doClick();
+            transferFocus();
     }//GEN-LAST:event_spinnerStockKeyPressed
 
     private void cajaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cajaNombreKeyTyped

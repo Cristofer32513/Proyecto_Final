@@ -219,6 +219,6 @@ public class ConsultarCategoria extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
-    public int id;
+    public int id = 0;
     final static String MOSTRAR_TODOS_LOS_DATOS = "SELECT * FROM Categorias ORDER BY id_categoria";
 }

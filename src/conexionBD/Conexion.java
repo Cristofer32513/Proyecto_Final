@@ -106,8 +106,7 @@ public class Conexion {
             pstm.setString(1, usuario);
             pstm.setString(2, contraseña);
             rs=pstm.executeQuery();
-        }
-        catch(SQLException e) {}
+        } catch(SQLException e) {}
         
         return rs;
     }
@@ -330,8 +329,7 @@ public class Conexion {
             ejecucion=pstm.executeUpdate();
             conexion.commit();
             return ejecucion==1;
-        }
-        catch(SQLException e){
+        } catch(SQLException e){
             try {
                 conexion.rollback();
                 conexion.setAutoCommit(true);
@@ -377,8 +375,7 @@ public class Conexion {
             info.getContentPane().add(panel);
             info.pack();
             info.setLocationRelativeTo(null);
-            info.setVisible(true);
-                       
+            info.setVisible(true);              
         } catch (SQLException e) {}
     }
     
@@ -407,8 +404,7 @@ public class Conexion {
             info.getContentPane().add(panel);
             info.pack();
             info.setLocationRelativeTo(null);
-            info.setVisible(true);
-                       
+            info.setVisible(true);         
         } catch (SQLException e) {}
     }
     
@@ -437,8 +433,7 @@ public class Conexion {
             info.getContentPane().add(panel);
             info.pack();
             info.setLocationRelativeTo(null);
-            info.setVisible(true);
-                       
+            info.setVisible(true);        
         } catch (SQLException e) {}
     }
 }

@@ -267,7 +267,8 @@ public class Producto extends javax.swing.JPanel {
         ConsultarProveedor consultar = new ConsultarProveedor(null, true);
         consultar.setVisible(true);
         habilitarCampos(false, true, true);
-        cajaTexto.setText(String.valueOf(consultar.id));
+        if(consultar.id != 0)
+            cajaTexto.setText(String.valueOf(consultar.id));
         consultar.dispose();
         buscar();
     }//GEN-LAST:event_radioProveedorActionPerformed
@@ -304,20 +305,17 @@ public class Producto extends javax.swing.JPanel {
                 actualizarTabla("SELECT * FROM Productos WHERE Nombre LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_producto");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioMarca.isSelected()){
+        } else if(radioMarca.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE Marca LIKE '%"+cajaTexto.getText()+"%' ORDER BY id_producto");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioProveedor.isSelected()){
+        } else if(radioProveedor.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE id_Proveedor = '"+cajaTexto.getText()+"' ORDER BY id_producto");
             else
                 actualizarTabla(MOSTRAR_TODOS_LOS_DATOS);
-        }
-        else if(radioCategoria.isSelected()){
+        } else if(radioCategoria.isSelected()){
             if(!cajaTexto.getText().equals(""))
                 actualizarTabla("SELECT * FROM Productos WHERE id_Categoria = '"+cajaTexto.getText()+"' ORDER BY id_producto");
             else
@@ -349,7 +347,8 @@ public class Producto extends javax.swing.JPanel {
         ConsultarCategoria consultar = new ConsultarCategoria(null, true);
         consultar.setVisible(true);
         habilitarCampos(false, true, true);
-        cajaTexto.setText(String.valueOf(consultar.id));
+        if(consultar.id !=0)
+            cajaTexto.setText(String.valueOf(consultar.id));
         consultar.dispose();
         buscar();
     }//GEN-LAST:event_radioCategoriaActionPerformed
