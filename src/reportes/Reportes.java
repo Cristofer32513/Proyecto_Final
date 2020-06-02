@@ -3,16 +3,14 @@ package reportes;
 import conexionBD.Conexion;
 import controlador.ProductoDAO;
 import controlador.VentaDAO;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import vista.VentanaUsuarios;
 
 public class Reportes extends javax.swing.JPanel {
 
@@ -244,96 +242,96 @@ public class Reportes extends javax.swing.JPanel {
         con.abrirConexion();
         try {
             @SuppressWarnings("UnusedAssignment")
-            JasperReport reporte = null;
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteProductosExt.jasper"));
+            InputStream reporte = null;
+            reporte = getClass().getResourceAsStream("/reportes/ReporteProductosExt.jasper");
+            Map<String, Object> map = new HashMap<>();
+            map.put("image", getClass().getResource("/reportes/productos.jpg"));
             @SuppressWarnings("static-access")
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, map, con.conexion);
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (JRException ex) {}
     }//GEN-LAST:event_btnProductosExtActionPerformed
 
     private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
         con.abrirConexion();
         try {
             @SuppressWarnings("UnusedAssignment")
-            JasperReport reporte = null;
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteCategorias.jasper"));
+            InputStream reporte = null;
+            reporte = getClass().getResourceAsStream("/reportes/ReporteCategorias.jasper");
+            Map<String, Object> map = new HashMap<>();
+            map.put("image", getClass().getResource("/reportes/categorias.png"));
             @SuppressWarnings("static-access")
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, map, con.conexion);
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+        } catch (JRException ex) {}       
     }//GEN-LAST:event_btnCategoriasActionPerformed
 
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
         con.abrirConexion();
         try {
             @SuppressWarnings("UnusedAssignment")
-            JasperReport reporte = null;
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteProveedores.jasper"));
+            InputStream reporte = null;
+            reporte = getClass().getResourceAsStream("/reportes/ReporteProveedores.jasper");
+            Map<String, Object> map = new HashMap<>();
+            map.put("image", getClass().getResource("/reportes/proveedor.png"));
             @SuppressWarnings("static-access")
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, map, con.conexion);
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (JRException ex) {}
     }//GEN-LAST:event_btnProveedoresActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         con.abrirConexion();
         try {
             @SuppressWarnings("UnusedAssignment")
-            JasperReport reporte = null;
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteProductos.jasper"));
+            InputStream reporte = null;
+            reporte = getClass().getResourceAsStream("/reportes/ReporteProductos.jasper");
+            Map<String, Object> map = new HashMap<>();
+            map.put("image", getClass().getResource("/reportes/productos.jpg"));
             @SuppressWarnings("static-access")
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, map, con.conexion);
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (JRException ex) {}
     }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         con.abrirConexion();
         try {
             @SuppressWarnings("UnusedAssignment")
-            JasperReport reporte = null;
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteClientes.jasper"));
+            InputStream reporte = null;
+            reporte = getClass().getResourceAsStream("/reportes/ReporteClientes.jasper");
+            Map<String, Object> map = new HashMap<>();
+            map.put("image", getClass().getResource("/reportes/cliente.png"));
             @SuppressWarnings("static-access")
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, map, con.conexion);
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (JRException ex) {}
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         con.abrirConexion();
         try {
             @SuppressWarnings("UnusedAssignment")
-            JasperReport reporte = null;
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteVentas.jasper"));
+            InputStream reporte = null;
+            reporte = getClass().getResourceAsStream("/reportes/ReporteVentas.jasper");
+            Map<String, Object> map = new HashMap<>();
+            map.put("image", getClass().getResource("/reportes/ventas.png"));
             @SuppressWarnings("static-access")
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con.conexion);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, map, con.conexion);
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (JRException ex) {}
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed

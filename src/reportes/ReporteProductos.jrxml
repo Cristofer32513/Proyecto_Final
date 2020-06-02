@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75c36069-fa4a-4997-8a37-a95fd07f1d47">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="18"/>
+	<property name="ireport.x" value="126"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -13,6 +13,7 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="image" class="java.lang.Object"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      productos."id_producto" AS productos_id_producto,
@@ -39,7 +40,7 @@ FROM
 		<band height="102" splitType="Stretch">
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="725" y="0" width="77" height="66" uuid="93a0725d-1543-4c90-b9b5-fc331850464b"/>
-				<imageExpression><![CDATA["src/reportes/productos.jpg"]]></imageExpression>
+				<imageExpression><![CDATA[$P{image}]]></imageExpression>
 			</image>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="b89aa028-88df-49df-8da1-a8e759105233"/>

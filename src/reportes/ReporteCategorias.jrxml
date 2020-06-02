@@ -13,6 +13,7 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="image" class="java.lang.Object"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      categorias."id_categoria" AS categorias_id_categoria,
@@ -31,7 +32,7 @@ FROM
 		<band height="132" splitType="Stretch">
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="456" y="0" width="99" height="95" uuid="aa29325f-ab16-40c4-b2ee-1876da619253"/>
-				<imageExpression><![CDATA["src/reportes/categorias.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{image}]]></imageExpression>
 			</image>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="256a90a0-b6a9-42c3-8cd4-e575ecd3b963"/>
